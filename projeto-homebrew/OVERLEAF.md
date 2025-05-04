@@ -15,9 +15,19 @@ Este documento fornece instruções específicas para usar o modelo LaTeX Projet
    - Em "Compiler", escolha "XeLaTeX"
    - Clique em "Save"
 
-## Resolvendo Problemas Comuns
+## Configuração Automática
 
-Se você encontrar problemas de compilação no Overleaf, siga estas etapas:
+O projeto já vem com configurações automáticas para o Overleaf. O arquivo `overleaf.tex` é carregado automaticamente e inclui:
+
+- Otimizações básicas de memória
+- Configurações para compilação mais rápida
+- Ajustes básicos de compatibilidade
+
+Na maioria dos casos, você não precisará fazer nenhuma alteração adicional.
+
+## Resolvendo Problemas Específicos
+
+Se, mesmo com as configurações automáticas, você encontrar problemas de compilação no Overleaf, siga estas etapas:
 
 ### 1. Problemas com Fontes
 
@@ -38,15 +48,6 @@ Se os mapas mentais causarem timeout ou erros de memória:
 1. Edite o arquivo `overleaf.tex`
 2. Descomente uma das opções na seção "SIMPLIFICAÇÃO DE MAPAS MENTAIS"
 3. Inicie com a opção mais simples e vá tentando as outras conforme necessário
-
-### 3. Ativando as Configurações de Compatibilidade
-
-Para ativar as configurações de compatibilidade com o Overleaf:
-
-1. Edite o arquivo `main.tex`
-2. Descomente a linha: `% \input{overleaf}`
-
-Isso ativará as modificações que você fez no arquivo `overleaf.tex`.
 
 ## Estrutura do Projeto
 

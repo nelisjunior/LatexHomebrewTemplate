@@ -1,228 +1,93 @@
-# Tutorial: Como usar o Modelo LaTeX com Estilo RPG
+# Guia de Início Rápido - Projeto LaTeX Homebrew
 
-Este tutorial apresenta como utilizar o modelo LaTeX modular com estilo visual inspirado em RPGs. Vamos explorar os recursos disponíveis e exemplos de uso.
+Este guia fornece informações essenciais para começar a usar o Projeto LaTeX Homebrew rapidamente.
 
-## 1. Primeiros Passos
+## 1. Começando com o Overleaf
 
-### 1.1 Configuração no Overleaf
+### Upload do Projeto
+1. Faça o download deste projeto como ZIP
+2. No Overleaf, clique em "New Project" > "Upload Project"
+3. Selecione o arquivo ZIP baixado
 
-Recomendamos o uso do Overleaf para compilar este projeto, já que ele fornece um ambiente LaTeX completo na nuvem:
+### Configuração do Compilador
+1. No menu do Overleaf, clique em "Menu" (ícone de hambúrguer)
+2. Selecione "Settings"
+3. Em "Compiler", escolha "XeLaTeX"
+4. Clique em "Save"
 
-1. Baixe este projeto como um arquivo ZIP
-2. Acesse [Overleaf](https://www.overleaf.com) e crie uma conta gratuita (ou faça login)
-3. Clique em "New Project" > "Upload Project"
-4. Faça upload do arquivo ZIP
-5. No menu superior do Overleaf, altere o compilador para XeLaTeX (Menu > Compiler > XeLaTeX)
-6. Clique em "Recompilar" para gerar o PDF
+## 2. Estrutura de Arquivos Principais
 
-### 1.2 Configuração Local
+- **main.tex**: O arquivo principal que você compilará
+- **0-pretextual.tex**: Elementos pré-textuais (capa, resumo, sumário)
+- **1-textual.tex**: O corpo principal do documento (importa os capítulos)
+- **2-postextual.tex**: Elementos pós-textuais (referências, apêndices)
+- **caps/capitulos/**: Diretório onde você deve criar seus capítulos
 
-Se preferir compilar localmente, você precisará:
+## 3. Como Adicionar Novo Conteúdo
 
-1. Instalar uma distribuição TeX como TeX Live, MiKTeX ou MacTeX
-2. Garantir que tenha o XeLaTeX e o Biber instalados
-3. Compilar usando os comandos:
-   ```
-   xelatex main.tex
-   biber main
-   xelatex main.tex
-   xelatex main.tex
-   ```
-
-## 2. Estrutura do Projeto
-
-O projeto está organizado de forma modular:
-
-- **main.tex**: Arquivo principal que compila o documento
-- **configuracoes.tex**: Pacotes e configurações gerais
-- **ambientes.tex**: Ambientes personalizados estilo RPG
-- **0-pretextual.tex**: Elementos pré-textuais (capa, sumário, etc.)
-- **1-textual.tex**: Elementos textuais (capítulos)
-- **2-postextual.tex**: Elementos pós-textuais (referências, glossário, etc.)
-- **caps/**: Pasta com os componentes separados por tipo
-  - **caps/pretextual/**: Componentes pré-textuais detalhados
-  - **caps/capitulos/**: Arquivos de cada capítulo 
-  - **caps/postextual/**: Componentes pós-textuais detalhados
-- **imgs/**: Pasta para imagens
-- **referencias.bib**: Arquivo com as referências bibliográficas
-
-## 3. Ambientes Personalizados
-
-### 3.1 Principais Ambientes
-
-```latex
-\begin{spell}
-\textbf{Nome do Feitiço}
-Descrição do feitiço...
-\end{spell}
-
-\begin{character}
-\textbf{Nome do Personagem}
-Descrição e estatísticas...
-\end{character}
-
-\begin{rule}
-\textbf{Título da Regra}
-Detalhes da regra...
-\end{rule}
-
-\begin{magicitem}
-\textbf{Nome do Item Mágico}
-Descrição do item...
-\end{magicitem}
-
-\begin{dmnote}
-Informações para o mestre/professor/orientador...
-\end{dmnote}
-
-\begin{rpgtable}
-Conteúdo de tabela estilizada...
-\end{rpgtable}
-
-\begin{quotebox}
-Citação destacada...
-\end{quotebox}
-
-\begin{highlight}
-Conteúdo em destaque...
-\end{highlight}
-```
-
-### 3.2 Comandos Especiais
-
-```latex
-% Notas de margem
-\rpgnote{Texto da nota de margem}
-
-% Título de seção estilizado
-\rpgsection{Título da Seção}
-
-% Título destacado
-\rpgtitle{Título Principal}
-
-% Estatísticas de personagem
-\stat{Nome}{Valor}
-
-% Barras de atributos
-\attrbar{Nome}{Valor}  % Valor entre 0-30
-
-% Itens de lista estilizados
-\begin{itemize}
-\rpgitem{Primeiro item}
-\rpgitem{Segundo item}
-\end{itemize}
-
-% Entradas de glossário
-\glossaryentry{termo}{definição}
-
-% Referenciar termo do glossário
-\gls{termo}
-
-% Indexar termo
-\index{termo}
-```
-
-## 4. Personalizando o Modelo
-
-### 4.1 Alterar Cores
-
-Edite o arquivo `configuracoes.tex` para modificar as cores do modelo:
-
-```latex
-\definecolor{pergaminho}{RGB}{249, 240, 181}
-\definecolor{capa}{RGB}{121, 26, 25}
-\definecolor{titulo}{RGB}{72, 26, 19}
-\definecolor{boxbg}{RGB}{253, 245, 196}
-\definecolor{boxborder}{RGB}{190, 150, 86}
-\definecolor{secaotitulo}{RGB}{140, 26, 20}
-\definecolor{spell}{RGB}{70, 26, 100}
-\definecolor{magicitem}{RGB}{26, 70, 100}
-\definecolor{rule}{RGB}{140, 20, 20}
-\definecolor{note}{RGB}{20, 100, 120}
-```
-
-### 4.2 Adicionar Novos Capítulos
-
-1. Crie um arquivo .tex na pasta `caps/capitulos/` (ex: `capitulo4.tex`)
-2. Adicione o conteúdo desejado
-3. Inclua-o no arquivo `caps/textual.tex`:
+### Adicionar um Novo Capítulo
+1. Crie um novo arquivo .tex em `caps/capitulos/` (ex: `capitulo3.tex`)
+2. Adicione seu conteúdo no arquivo
+3. Importe o arquivo em `1-textual.tex` com o comando:
    ```latex
-   \input{caps/capitulos/capitulo4}
+   \input{caps/capitulos/capitulo3}
    ```
 
-### 4.3 Adicionando Referências Bibliográficas
+### Adicionar Referências Bibliográficas
+1. Edite o arquivo `referencias.bib`
+2. Adicione suas referências no formato BibTeX
+3. Cite no texto usando `\cite{chave}` ou `\textcite{chave}`
 
-Adicione suas referências no arquivo `referencias.bib` seguindo o formato BibTeX:
+## 4. Ambientes Personalizados
 
-```bibtex
-@book{chave,
-  title={Título do Livro},
-  author={Sobrenome, Nome},
-  year={Ano},
-  publisher={Editora},
-  address={Cidade}
-}
-```
+O modelo inclui ambientes estilizados que você pode usar em seu documento:
 
-Para citar, use:
+### Caixa de Nota
 ```latex
-\cite{chave}
+\begin{nota}{Título da Nota}
+  Conteúdo da nota aqui.
+\end{nota}
 ```
 
-## 5. Exemplos Práticos
-
-### 5.1 Exemplo de Página de Estatísticas de Personagem
-
+### Caixa de Aviso
 ```latex
-\rpgtitle{Estatísticas de Personagem}
-
-\begin{character}
-\textbf{Gandalf, o Cinzento}\\
-\textit{Humano Mago 12}
-
-\stat{FOR}{10} \stat{DES}{12} \stat{CON}{14}
-\stat{INT}{18} \stat{SAB}{16} \stat{CAR}{15}
-
-\rpgsection{Atributos}
-\attrbar{Conhecimento Arcano}{25}
-\attrbar{Diplomacia}{18}
-\attrbar{Percepção}{20}
-
-\rpgsection{Habilidades}
-\begin{itemize}
-\rpgitem{Especialista em magias de fogo e luz}
-\rpgitem{Resistência a magias}
-\rpgitem{Conhecimento vasto sobre história e criaturas}
-\end{itemize}
-\end{character}
+\begin{aviso}{Título do Aviso}
+  Conteúdo do aviso aqui.
+\end{aviso}
 ```
 
-### 5.2 Exemplo de Descrição de Item Mágico
+### Caixa de Destaque
+```latex
+\begin{destaque}{Título de Destaque}
+  Conteúdo em destaque aqui.
+\end{destaque}
+```
+
+## 5. Mapas Mentais
+
+Para incluir um mapa mental de capítulo:
 
 ```latex
-\begin{magicitem}
-\textbf{Vara do Poder Arcano}\\
-\textit{Cajado, lendário (requer sintonização por um mago)}
-
-Este cajado de madeira antiga emite uma tênue aura azulada. Ele contém propriedades mágicas poderosas:
-
-\begin{itemize}
-\rpgitem{+2 de bônus em jogadas de ataque com magias}
-\rpgitem{Você pode gastar 1 carga para conjurar \textit{Mísseis Mágicos} (nível 3)}
-\rpgitem{Você pode gastar 3 cargas para conjurar \textit{Bola de Fogo} (nível 5)}
-\end{itemize}
-
-O cajado tem 10 cargas e recupera 1d6+4 cargas diariamente ao amanhecer.
-\end{magicitem}
-
-\rpgnote{Este item é adequado para personagens de nível 10 ou superior, pois seu poder pode desbalancear encontros de nível mais baixo.}
+\begin{docmap}{Título do Mapa}
+  \node[concept] {Conceito Central}
+    child[concept] {Conceito Secundário 1}
+    child[concept] {Conceito Secundário 2}
+    child[concept] {Conceito Secundário 3};
+\end{docmap}
 ```
 
-## 6. Dicas e Solução de Problemas
+O documento também gera automaticamente um mapa da estrutura completa.
 
-- Sempre compile o documento várias vezes, especialmente quando usar referências cruzadas, índice ou bibliografia
-- Use `\clearpage` para forçar uma quebra de página quando necessário
-- Em caso de problemas com imagens, verifique se estão na pasta `imgs/` e se o caminho está correto
-- Se encontrar erros de compilação, tente comentar partes do código para isolar o problema
+## 6. Solução de Problemas
 
-Esperamos que este tutorial ajude você a utilizar este modelo. Para mais informações, consulte a documentação do LaTeX ou entre em contato com o desenvolvedor do modelo.
+Se encontrar problemas de compilação no Overleaf:
+
+1. Verifique o arquivo `overleaf.tex` para configurações específicas
+2. Para documentos muito grandes ou complexos, você pode precisar simplificar os mapas mentais
+3. Consulte `OVERLEAF.md` para soluções detalhadas
+
+## 7. Recursos Adicionais
+
+- **Modelo de Capítulo**: Veja `caps/capitulos/capitulo1.tex`
+- **Modelo de Mapa Mental**: Veja `exemplos/exemplo-mapamental.tex`
+- **Documentação Completa**: Consulte os comentários nos arquivos .tex e nos documentos .md

@@ -1,24 +1,30 @@
 % Configurações específicas para compatibilidade com Overleaf
-% Inclua este arquivo em main.tex se estiver usando o Overleaf
-% Descomente as linhas conforme necessário para resolver problemas específicos de compilação
+% Este arquivo é automaticamente carregado pelo main.tex
+% As configurações básicas já estão ativas; as avançadas podem ser ativadas se necessário
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% INSTRUÇÕES PARA COMPATIBILIDADE COM OVERLEAF
+% CONFIGURAÇÕES AUTOMÁTICAS DO OVERLEAF
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-% Se você estiver enfrentando problemas de compilação no Overleaf,
-% descomente as seções relevantes abaixo:
+% Este arquivo aplica automaticamente ajustes básicos de compatibilidade
+% para o Overleaf. Configurações adicionais podem ser ativadas 
+% descomentando as linhas apropriadas abaixo.
 %
-% 1. PROBLEMAS COM FONTES: Se houver erros relacionados à fonte
-%    Latin Modern Roman, descomente as linhas na SEÇÃO 1
-%
-% 2. PROBLEMAS COM MAPAS MENTAIS: Se os mapas mentais não estiverem
-%    compilando (timeout/memória), descomente as linhas na SEÇÃO 2
-%
-% 3. PROBLEMAS DE MEMÓRIA: Se houver erros de falta de memória,
-%    descomente as linhas na SEÇÃO 3
+% As configurações básicas incluem:
+% - Otimizações de memória leves
+% - Ajustes para compilação mais rápida
+% - Compatibilidade com fontes padrão
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% CONFIGURAÇÃO BÁSICA (JÁ ATIVA)
+\usepackage{etoolbox}
+\apptocmd{\tableofcontents}{\newpage}{}{}
+\tikzset{every shadow/.style={opacity=0.7}}  % Reduz a opacidade das sombras para melhor desempenho
+
+% Configuração para detecção automática de ambiente Overleaf
+\newif\ifoverleaf
+\overleaftrue  % Assume que estamos no Overleaf
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % SEÇÃO 1: AJUSTES DE FONTES
