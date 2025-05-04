@@ -1,0 +1,83 @@
+% Pacotes básicos
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{xcolor}
+\usepackage{microtype}
+\usepackage{lipsum}
+\usepackage{tcolorbox}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{multicol}
+\usepackage{afterpage}
+\usepackage{tikz}
+\usepackage{setspace}
+\usepackage{bookmark}
+
+% Suporte a língua portuguesa
+\usepackage[brazilian]{babel}
+
+% Bibliografia
+\usepackage[backend=biber, style=alphabetic]{biblatex}
+\addbibresource{referencias.bib}
+
+% Configurações de fontes usando fontspec (para XeLaTeX)
+\usepackage{fontspec}
+\defaultfontfeatures{Ligatures=TeX}
+
+% Tentativa de usar a fonte Dominican ou Luxurious Roman
+\IfFileExists{Dominican.otf}{%
+    \setmainfont{Dominican}
+}{%
+    \setmainfont{Luxurious Roman}[
+        Path = /usr/share/fonts/truetype/luxurious-roman/,
+        Extension = .ttf,
+        UprightFont = *-Regular,
+        BoldFont = *-Regular, % Se não houver variante negrito
+        ItalicFont = *-Regular, % Se não houver variante itálica
+        Renderer = Basic
+    ]
+}
+
+% Definição de cores inspiradas em RPG
+\definecolor{pergaminho}{RGB}{249, 240, 181}
+\definecolor{capa}{RGB}{121, 26, 25}
+\definecolor{titulo}{RGB}{72, 26, 19}
+\definecolor{boxbg}{RGB}{253, 245, 196}
+\definecolor{boxborder}{RGB}{190, 150, 86}
+\definecolor{secaotitulo}{RGB}{140, 26, 20}
+
+% Configuração de margens
+\geometry{
+    a4paper,
+    top=2.5cm,
+    bottom=2.5cm,
+    left=3cm,
+    right=3cm,
+    headheight=15pt
+}
+
+% Configuração de espaçamento
+\setlength{\parindent}{1.5cm}
+\onehalfspacing
+
+% Estilo de cabeçalho e rodapé
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\leftmark}
+\fancyhead[R]{\thepage}
+\fancyfoot[C]{\textit{Projeto Homebrew}}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+% Personalização dos títulos de capítulos
+\titleformat{\chapter}[display]
+{\normalfont\huge\bfseries\color{secaotitulo}}
+{\chaptertitlename\ \thechapter}{20pt}{\Huge}
+\titlespacing*{\chapter}{0pt}{50pt}{40pt}
+
+% Cor de fundo da página
+\pagecolor{pergaminho}

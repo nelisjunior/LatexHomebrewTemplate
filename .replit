@@ -1,0 +1,39 @@
+modules = ["latex"]
+
+[nix]
+channel = "stable-24_05"
+
+[workflows]
+runButton = "Project"
+
+[[workflows.workflow]]
+name = "Project"
+mode = "parallel"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "LaTeX Compiler"
+
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "LaTeX-Compilation"
+
+[[workflows.workflow]]
+name = "LaTeX Compiler"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "cd projeto-homebrew && xelatex -interaction=nonstopmode main.tex && biber main && xelatex -interaction=nonstopmode main.tex && xelatex -interaction=nonstopmode main.tex"
+
+[[workflows.workflow]]
+name = "LaTeX-Compilation"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "cd projeto-homebrew && xelatex -interaction=nonstopmode main.tex && biber main && xelatex -interaction=nonstopmode main.tex && xelatex -interaction=nonstopmode main.tex && echo \"Compilation complete. PDF should be generated.\" && ls -la"
+
+[deployment]
+run = ["sh", "-c", "cd projeto-homebrew && xelatex -interaction=nonstopmode main.tex && biber main && xelatex -interaction=nonstopmode main.tex && xelatex -interaction=nonstopmode main.tex"]

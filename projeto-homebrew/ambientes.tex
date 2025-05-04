@@ -1,0 +1,121 @@
+% Ambientes personalizados com tcolorbox para estilo RPG
+
+% Configurações comuns para caixas RPG
+\tcbset{
+    common/.style={
+        enhanced,
+        frame hidden,
+        interior hidden,
+        colback=boxbg,
+        colframe=boxborder,
+        fonttitle=\bfseries\Large,
+        coltitle=white,
+        colbacktitle=boxborder,
+        attach boxed title to top left={yshift=-2mm, xshift=5mm},
+        boxed title style={sharp corners, frame hidden},
+        underlay={\begin{tcbclipinterior}
+            \draw[boxborder, line width=2pt] 
+            (frame.south west) rectangle (frame.north east);
+            \end{tcbclipinterior}},
+        breakable,
+        drop shadow=boxborder,
+    }
+}
+
+% Ambiente para descrição de itens mágicos
+\newtcolorbox{magicitem}[1][]{
+    common,
+    title=Item Mágico,
+    #1
+}
+
+% Ambiente para feitiços
+\newtcolorbox{spell}[1][]{
+    common,
+    colbacktitle={rgb:blue,2;green,1;red,6},
+    title=Feitiço,
+    #1
+}
+
+% Ambiente para personagens
+\newtcolorbox{character}[1][]{
+    common,
+    colbacktitle={rgb:red,2;green,2;blue,0},
+    title=Personagem,
+    #1
+}
+
+% Ambiente para notas do mestre
+\newtcolorbox{dmnote}[1][]{
+    common,
+    colbacktitle={rgb:red,0;green,3;blue,5},
+    title=Nota do Mestre,
+    #1
+}
+
+% Ambiente para regras
+\newtcolorbox{rule}[1][]{
+    common,
+    colbacktitle={rgb:red,4;green,0;blue,0},
+    title=Regra,
+    #1
+}
+
+% Ambiente para tabelas
+\newtcolorbox{rpgtable}[1][]{
+    common,
+    colbacktitle={rgb:black,1;yellow,0.1},
+    title=Tabela,
+    #1
+}
+
+% Ambiente para citações
+\newtcolorbox{quotebox}[1][]{
+    common,
+    fonttitle=\itshape\large,
+    colbacktitle={rgb:gray,3;black,1},
+    title=Citação,
+    #1
+}
+
+% Ambiente para destaque
+\newtcolorbox{highlight}[1][]{
+    common,
+    colbacktitle={rgb:orange,5;yellow,1},
+    title=Destaque,
+    #1
+}
+
+% Comandos para estatísticas de personagem
+\newcommand{\statnumber}[1]{%
+    \begingroup
+    \setlength{\fboxsep}{2pt}%
+    \colorbox{boxbg}{\textbf{#1}}%
+    \endgroup
+}
+
+\newcommand{\stat}[2]{%
+    \textbf{#1} \statnumber{#2}%
+}
+
+% Comando para criar barras de atributos
+\newcommand{\attrbar}[2]{%
+    \begingroup
+    \setlength{\unitlength}{1mm}%
+    \begin{picture}(30,5)%
+    \put(0,0){\color{boxborder}\rule{30mm}{5mm}}%
+    \put(0,0){\color{secaotitulo}\rule{#2mm}{5mm}}%
+    \put(15,2.5){\makebox(0,0)[c]{\textcolor{white}{\textbf{#1}}}}%
+    \end{picture}%
+    \endgroup
+}
+
+% Comando para titulos estilizados
+\newcommand{\rpgtitle}[1]{%
+    \begin{center}
+        \begingroup
+        \setlength{\fboxsep}{5pt}%
+        \colorbox{capa}{\textcolor{white}{\Large\bfseries #1}}%
+        \endgroup
+    \end{center}
+}

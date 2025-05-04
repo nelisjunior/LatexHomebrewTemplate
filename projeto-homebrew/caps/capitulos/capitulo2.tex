@@ -1,0 +1,110 @@
+\chapter{Utilizando o Modelo}
+
+Este capítulo apresenta orientações sobre como utilizar e personalizar este modelo LaTeX.
+
+\section{Estrutura de Arquivos}
+
+A estrutura modular deste modelo permite que cada parte do documento seja mantida em um arquivo separado, facilitando a organização e manutenção.
+
+\begin{highlight}
+Os arquivos estão organizados da seguinte forma:
+\begin{itemize}
+    \item \textbf{main.tex:} Arquivo principal que compila todo o documento
+    \item \textbf{configuracoes.tex:} Contém os pacotes e configurações do documento
+    \item \textbf{ambientes.tex:} Define os ambientes personalizados com tcolorbox
+    \item \textbf{0-pretextual.tex:} Carrega os elementos pré-textuais
+    \item \textbf{1-textual.tex:} Carrega os elementos textuais
+    \item \textbf{2-postextual.tex:} Carrega os elementos pós-textuais
+    \item \textbf{caps/pretextual.tex:} Conteúdo adicional dos elementos pré-textuais
+    \item \textbf{caps/textual.tex:} Gerencia a inclusão dos capítulos
+    \item \textbf{caps/postextual.tex:} Conteúdo dos elementos pós-textuais
+    \item \textbf{caps/capitulos/:} Diretório com os arquivos de cada capítulo
+\end{itemize}
+\end{highlight}
+
+\section{Personalização}
+
+O modelo pode ser personalizado de diversas formas para atender às necessidades específicas do projeto.
+
+\subsection{Cores e Estilo}
+
+As cores utilizadas no documento estão definidas no arquivo \texttt{configuracoes.tex}. Para alterar o esquema de cores, modifique as definições:
+
+\begin{quotebox}
+\verb|\definecolor{pergaminho}{RGB}{249, 240, 181}|\\
+\verb|\definecolor{capa}{RGB}{121, 26, 25}|\\
+\verb|\definecolor{titulo}{RGB}{72, 26, 19}|\\
+\verb|\definecolor{boxbg}{RGB}{253, 245, 196}|\\
+\verb|\definecolor{boxborder}{RGB}{190, 150, 86}|\\
+\verb|\definecolor{secaotitulo}{RGB}{140, 26, 20}|
+\end{quotebox}
+
+\subsection{Fontes}
+
+O modelo utiliza o pacote \texttt{fontspec} para carregar fontes personalizadas. Por padrão, tenta utilizar a fonte Dominican ou Luxurious Roman. Para utilizar outra fonte, modifique as configurações no arquivo \texttt{configuracoes.tex}:
+
+\begin{quotebox}
+\verb|\setmainfont{NomeDaFonte}[|\\
+\verb|    Path = /caminho/para/fonte/,|\\
+\verb|    Extension = .ttf,|\\
+\verb|    UprightFont = *-Regular,|\\
+\verb|    BoldFont = *-Bold,|\\
+\verb|    ItalicFont = *-Italic,|\\
+\verb|    BoldItalicFont = *-BoldItalic,|\\
+\verb|    Renderer = Basic|\\
+\verb|]|
+\end{quotebox}
+
+\section{Adicionando Conteúdo}
+
+Para adicionar novos capítulos ao documento, siga os passos:
+
+\begin{rpgtable}
+\begin{enumerate}
+    \item Crie um novo arquivo .tex na pasta \texttt{caps/capitulos/}
+    \item Adicione o conteúdo do capítulo, começando com \verb|\chapter{Título do Capítulo}|
+    \item Inclua o novo capítulo no arquivo \texttt{caps/textual.tex} usando \verb|\input{caps/capitulos/nomeDoArquivo}|
+\end{enumerate}
+\end{rpgtable}
+
+\section{Tabelas e Figuras}
+
+O modelo suporta tabelas e figuras com estilo personalizado:
+
+\begin{rpgtable}
+\begin{tabular}{lcr}
+\toprule
+\textbf{Classe} & \textbf{Dado de Vida} & \textbf{Habilidade Principal} \\
+\midrule
+Bárbaro & d12 & Força \\
+Bardo & d8 & Carisma \\
+Clérigo & d8 & Sabedoria \\
+Druida & d8 & Sabedoria \\
+Guerreiro & d10 & Força ou Destreza \\
+Ladino & d8 & Destreza \\
+Mago & d6 & Inteligência \\
+Monge & d8 & Destreza e Sabedoria \\
+Paladino & d10 & Força e Carisma \\
+Patrulheiro & d10 & Destreza e Sabedoria \\
+Feiticeiro & d6 & Carisma \\
+Bruxo & d8 & Carisma \\
+\bottomrule
+\end{tabular}
+\end{rpgtable}
+
+Para incluir figuras:
+
+\begin{quotebox}
+\verb|\begin{figure}[htb]|\\
+\verb|    \centering|\\
+\verb|    \includegraphics[width=0.7\textwidth]{imgs/nomeDaImagem}|\\
+\verb|    \caption{Descrição da figura}|\\
+\verb|    \label{fig:identificador}|\\
+\verb|\end{figure}|
+\end{quotebox}
+
+\section{Bibliografia}
+
+O modelo utiliza o pacote \texttt{biblatex} para gerenciar as referências bibliográficas. Para adicionar novas referências, edite o arquivo \texttt{referencias.bib} e cite-as no texto usando \verb|\cite{chave}|.
+
+Para imprimir a bibliografia, o comando \verb|\printbibliography| já está incluído no arquivo \texttt{caps/postextual.tex}.
