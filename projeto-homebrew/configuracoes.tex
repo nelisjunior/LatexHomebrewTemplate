@@ -58,7 +58,12 @@
 \defaultfontfeatures{Ligatures=TeX}
 
 % Configuração de fontes para documentos RPG
+% Usando Latin Modern Roman que é mais compatível com Overleaf
 \setmainfont{Latin Modern Roman}
+
+% Comentário: Se Latin Modern Roman não estiver disponível no seu sistema,
+% você pode descomentar a linha abaixo e usar Times New Roman
+% \setmainfont{Times New Roman}
 
 % Definição de cores inspiradas em RPG
 \definecolor{pergaminho}{RGB}{249, 240, 181}
@@ -97,11 +102,11 @@
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0.4pt}
 
-% Personalização dos títulos de capítulos
-\titleformat{\chapter}[display]
+% Personalização dos títulos de seções (equivalente a capítulos em article)
+\titleformat{\section}[display]
 {\normalfont\huge\bfseries\color{secaotitulo}}
-{\chaptertitlename\ \thechapter}{20pt}{\Huge}
-\titlespacing*{\chapter}{0pt}{50pt}{40pt}
+{\thesection}{20pt}{\Huge}
+\titlespacing*{\section}{0pt}{50pt}{40pt}
 
 % Cor de fundo da página
 \pagecolor{pergaminho}
