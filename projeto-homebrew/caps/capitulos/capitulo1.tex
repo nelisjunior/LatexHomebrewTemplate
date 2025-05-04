@@ -1,0 +1,142 @@
+% Conteúdo do Capítulo 1
+\section{Introdução aos Ambientes de RPG}
+
+Este capítulo apresenta uma visão geral dos ambientes personalizados disponíveis neste modelo LaTeX inspirado em RPG.
+
+\subsection{A Estética RPG em Documentos Acadêmicos}
+
+Combinar a estética visual de livros de RPG com o rigor e organização de documentos acadêmicos permite criar materiais que são visualmente atraentes e, ao mesmo tempo, informativos e bem estruturados.
+
+\rpgnote{Este modelo é particularmente útil para criar manuais de RPG, livros de regras para jogos de tabuleiro, ou qualquer documento que se beneficie de uma estética de "pergaminho".}
+
+\begin{dmnote}
+Esta caixa destaca informações importantes para o mestre (ou, no contexto acadêmico, para o professor ou orientador). É ideal para notas metodológicas ou instruções especiais.
+\end{dmnote}
+
+\subsection{Ambientes Principais}
+
+O modelo inclui diversos ambientes personalizados, cada um com um estilo visual distinto:
+
+\begin{spell}
+\textbf{Ambiente Spell (Feitiço)}
+
+Este ambiente é ideal para destacar elementos especiais, como fórmulas matemáticas importantes, algoritmos, ou definições fundamentais.
+\end{spell}
+
+\begin{character}
+\textbf{Ambiente Character (Personagem)}
+
+Perfeito para biografias, perfis de estudo de caso, ou descrições de entidades importantes no seu trabalho acadêmico.
+\end{character}
+
+\begin{rule}
+\textbf{Ambiente Rule (Regra)}
+
+Use este ambiente para destacar regras, princípios, teoremas, ou outras declarações normativas que são centrais ao seu trabalho.
+\end{rule}
+
+\begin{magicitem}
+\textbf{Ambiente Magic Item (Item Mágico)}
+
+Ideal para destacar ferramentas, recursos ou conceitos especiais que têm um papel significativo no seu trabalho.
+\end{magicitem}
+
+\rpgsection{Comandos Personalizados}
+
+Além dos ambientes, o modelo também oferece comandos personalizados:
+
+\begin{itemize}
+\rpgitem{O comando \texttt{\\rpgnote\{\}} permite adicionar notas na margem}
+\rpgitem{O comando \texttt{\\rpgsection\{\}} cria cabeçalhos estilizados}
+\rpgitem{O comando \texttt{\\rpgtitle\{\}} cria títulos destacados}
+\rpgitem{Os comandos \texttt{\\stat\{\}\{\}} e \texttt{\\attrbar\{\}\{\}} são úteis para apresentar métricas}
+\end{itemize}
+
+Exemplo de métricas usando \texttt{\\stat}:
+
+\stat{Clareza}{18} \stat{Organização}{16} \stat{Impacto Visual}{20}
+
+E exemplo de barras de atributos usando \texttt{\\attrbar}:
+
+\attrbar{Facilidade de Uso}{25}
+\attrbar{Flexibilidade}{20}
+\attrbar{Compatibilidade}{18}
+
+\begin{quotebox}
+"A visualização adequada de informações é tão importante quanto o próprio conteúdo. Um documento bem formatado convida à leitura e facilita a compreensão."
+
+— Autor Desconhecido
+\end{quotebox}
+
+\begin{highlight}
+O estilo visual inspirado em RPG não substitui o conteúdo acadêmico rigoroso. Use estes recursos para enriquecer e destacar seu conteúdo, mantendo sempre o rigor e a clareza característicos de trabalhos acadêmicos.
+\end{highlight}
+
+\section{Mapas Mentais da Estrutura do Documento}
+
+Uma das características mais úteis deste modelo é a capacidade de gerar automaticamente mapas mentais que visualizam a estrutura do documento. Esta funcionalidade ajuda leitores e autores a compreender a organização do conteúdo de forma visual e intuitiva.
+
+\subsection{Mapas Mentais Predefinidos}
+
+O modelo inclui mapas mentais pré-definidos que podem ser incluídos em qualquer parte do documento usando o comando \texttt{\\input\{caps/pretextual/docmap\}}. Este mapa é estático e apresenta uma estrutura típica de documento acadêmico.
+
+\subsection{Mapas Mentais Automatizados}
+
+Além dos mapas pré-definidos, o modelo também oferece funcionalidades para gerar mapas mentais automaticamente baseados na estrutura real do documento. Existem dois comandos principais para esta função:
+
+\begin{itemize}
+\rpgitem{O comando \texttt{\\generateautodocmap} gera um mapa básico baseado na estrutura atual do documento}
+\rpgitem{O comando \texttt{\\generatecomplexdocmap} gera um mapa detalhado com vários níveis de hierarquia}
+\end{itemize}
+
+\rpgnote{Os mapas mentais são gerados usando o pacote TikZ e podem ser personalizados conforme necessário. Veja o arquivo \texttt{ambientes/docmap.tex} para mais detalhes.}
+
+\begin{spell}
+\textbf{Criando Mapas Mentais Personalizados}
+
+Para criar um mapa mental personalizado, use o ambiente \texttt{docstructmap} e os comandos \texttt{\\docmaproot}, \texttt{\\docmaplevelone}, \texttt{\\docmapleveltwo}, etc. Exemplo:
+
+\begin{verbatim}
+\begin{docstructmap}
+    \docmaproot{Título Principal}
+    \docmaplevelone{secao1}{30}{Seção 1}
+    \docmapleveltwo{subsec1}{secao1}{60}{Subseção 1.1}
+\end{docstructmap}
+\end{verbatim}
+\end{spell}
+
+\begin{dmnote}
+Os mapas mentais são especialmente úteis para documentos longos ou complexos, pois fornecem uma visão geral clara da estrutura. Considere incluir um no início de cada capítulo principal para orientar o leitor.
+\end{dmnote}
+
+\subsection{Exemplo de Mapa Mental Simples}
+
+Abaixo está um exemplo de um mapa mental personalizado para um capítulo:
+
+\begin{docstructmap}
+    % Nó raiz - Documento principal
+    \docmaproot{Capítulo 1\\Introdução}
+    
+    % Seções principais (nível 1)
+    \docmaplevelone{secao1}{30}{Ambientes\\de RPG}
+    \docmaplevelone{secao2}{150}{Comandos\\Personalizados}
+    \docmaplevelone{secao3}{270}{Mapas\\Mentais}
+    
+    % Subseções da Seção 1 (nível 2)
+    \docmapleveltwo{subsec1_1}{secao1}{0}{Estética\\Visual}
+    \docmapleveltwo{subsec1_2}{secao1}{60}{Ambientes\\Principais}
+    
+    % Subseções da Seção 2 (nível 2)
+    \docmapleveltwo{subsec2_1}{secao2}{120}{Comandos\\de Formatação}
+    \docmapleveltwo{subsec2_2}{secao2}{180}{Comandos\\de Estilo}
+    
+    % Subseções da Seção 3 (nível 2)
+    \docmapleveltwo{subsec3_1}{secao3}{240}{Mapas\\Predefinidos}
+    \docmapleveltwo{subsec3_2}{secao3}{300}{Mapas\\Automáticos}
+\end{docstructmap}
+
+\docmaplegend{
+    Este mapa mental ilustra a estrutura do Capítulo 1, mostrando as principais seções e 
+    suas respectivas subseções. Os mapas mentais ajudam a visualizar a organização do 
+    conteúdo e podem ser criados manualmente ou gerados automaticamente.
+}

@@ -1,0 +1,232 @@
+% Implementação de um sistema automatizado para geração de mapa mental da estrutura do documento
+% Este arquivo fornece funcionalidades para analisar automaticamente a estrutura do documento
+
+% Pacotes necessários para manipulação de listas e strings
+\usepackage{etoolbox}
+\usepackage{xstring}
+
+% Contador para manter controle de seções para o mapa mental
+\newcounter{docmapnodecounter}
+\setcounter{docmapnodecounter}{0}
+
+% Armazenamento dos títulos das seções utilizando listas mais robustas
+\def\autodocmap@sectionlist{}
+\def\autodocmap@subsectionlist{}
+\def\autodocmap@subsubsectionlist{}
+
+% Contadores para o número de seções, subseções, etc.
+\newcounter{sectioncount}
+\newcounter{subsectioncount}
+\newcounter{subsubsectioncount}
+\newcounter{sectionangle}
+\newcounter{subsectionangle}
+\newcounter{subsubsectionangle}
+
+% Salva os comandos originais
+\let\oldsection\section
+\let\oldsubsection\subsection
+\let\oldsubsubsection\subsubsection
+\let\oldchapter\chapter
+
+% Define os ângulos base para cada nível
+\newcommand{\autodocmap@sectionbaseangle}{120}
+\newcommand{\autodocmap@subsectionbaseangle}{30}
+\newcommand{\autodocmap@subsubsectionbaseangle}{45}
+
+% Armazenar informações do capítulo atual
+\newcommand{\autodocmap@currentchapter}{}
+
+% Redefine o comando de capítulo para rastrear títulos
+\renewcommand{\chapter}[2][]{%
+    \renewcommand{\autodocmap@currentchapter}{#2}%
+    \oldchapter[#1]{#2}%
+}
+
+% Redefine o comando de seção para rastrear títulos
+\renewcommand{\section}[2][]{%
+    \stepcounter{sectioncount}%
+    \setcounter{subsectioncount}{0}%
+    \setcounter{sectionangle}{\value{sectioncount}}%
+    \multiply\value{sectionangle} by 60%
+    % Armazena os dados da seção para uso posterior no mapa
+    \protected@edef\autodocmap@sectionlist{%
+        \autodocmap@sectionlist
+        \noexpand\docmapleveltwo{sec\arabic{sectioncount}}{textual}{\thesectionangle}{#2}%
+    }%
+    \oldsection[#1]{#2}%
+}
+
+% Redefine o comando de subseção para rastrear títulos
+\renewcommand{\subsection}[2][]{%
+    \stepcounter{subsectioncount}%
+    \setcounter{subsubsectioncount}{0}%
+    \setcounter{subsectionangle}{\autodocmap@subsectionbaseangle}%
+    \multiply\value{subsectionangle} by \value{subsectioncount}%
+    % Armazena os dados da subseção para uso posterior no mapa
+    \protected@edef\autodocmap@subsectionlist{%
+        \autodocmap@subsectionlist
+        \noexpand\docmaplevelthree{subsec\arabic{sectioncount}_\arabic{subsectioncount}}{sec\arabic{sectioncount}}{\thesubsectionangle}{#2}%
+    }%
+    \oldsubsection[#1]{#2}%
+}
+
+% Redefine o comando de subsubseção para rastrear títulos
+\renewcommand{\subsubsection}[2][]{%
+    \stepcounter{subsubsectioncount}%
+    \setcounter{subsubsectionangle}{\autodocmap@subsubsectionbaseangle}%
+    \multiply\value{subsubsectionangle} by \value{subsubsectioncount}%
+    % Armazena os dados da subsubseção para uso posterior no mapa
+    \protected@edef\autodocmap@subsubsectionlist{%
+        \autodocmap@subsubsectionlist
+        \noexpand\docmaplevelfour{subsubsec\arabic{sectioncount}_\arabic{subsectioncount}_\arabic{subsubsectioncount}}{subsec\arabic{sectioncount}_\arabic{subsectioncount}}{\thesubsubsectionangle}{#2}%
+    }%
+    \oldsubsubsection[#1]{#2}%
+}
+
+% Comando para gerar automaticamente o mapa mental com base nos dados coletados
+\newcommand{\generateautodocmap}{%
+    \section*{Mapa Automático da Estrutura do Documento}
+    
+    \begin{docstructmap}
+        % Nó raiz - Documento principal
+        \docmaproot{Projeto Homebrew\\LaTeX Modular}
+        
+        % Elementos principais (nível 1)
+        \docmaplevelone{pretextual}{30}{Elementos\\Pré-textuais}
+        \docmaplevelone{textual}{150}{Elementos\\Textuais}
+        \docmaplevelone{postextual}{270}{Elementos\\Pós-textuais}
+        
+        % Nós pré-definidos para elementos comuns (nível 2)
+        \docmapleveltwo{capa}{pretextual}{0}{Capa e Título}
+        \docmapleveltwo{toc}{pretextual}{90}{Sumário}
+        
+        \docmapleveltwo{ref}{postextual}{240}{Referências\\Bibliográficas}
+        \docmapleveltwo{gloss}{postextual}{300}{Glossário}
+        \docmapleveltwo{ind}{postextual}{340}{Índice Remissivo}
+        
+        % Gerar nós para cada seção registrada (nível 2)
+        \autodocmap@sectionlist
+        
+        % Gerar nós para cada subseção registrada (nível 3)
+        \autodocmap@subsectionlist
+        
+        % Gerar nós para cada subsubseção registrada (nível 4)
+        \autodocmap@subsubsectionlist
+        
+    \end{docstructmap}
+    
+    \docmaplegend{
+        Este mapa mental foi gerado automaticamente com base na estrutura real do documento.
+        Ele representa a hierarquia de capítulos, seções e subseções no formato de um mapa mental.
+        As cores indicam diferentes níveis na hierarquia do documento.
+    }
+}
+
+% Comando para gerar automaticamente um mapa mental focado na estrutura atual
+\newcommand{\generatesectiondocmap}[1][Capítulo Atual]{%
+    \section*{Mapa da Estrutura do Capítulo}
+    
+    \begin{docstructmap}
+        % Nó raiz - Capítulo atual
+        \docmaproot{#1}
+        
+        % Gerar nós para cada seção registrada (nível 1)
+        % Esta é uma versão simplificada que mostra apenas o capítulo atual
+        % Em uma implementação mais completa, seria filtrado pelo capítulo atual
+        \autodocmap@sectionlist
+        
+        % Gerar nós para cada subseção registrada (nível 2)
+        \autodocmap@subsectionlist
+        
+    \end{docstructmap}
+    
+    \docmaplegend{
+        Este mapa mental mostra a estrutura específica deste capítulo, 
+        destacando suas seções e subseções principais.
+    }
+}
+
+% Comando para gerar um mapa mental complexo predefinido
+\newcommand{\generatecomplexdocmap}{%
+    \section*{Mapa da Estrutura do Documento}
+    
+    \begin{docstructmap}
+        % Nó raiz - Documento principal
+        \docmaproot{Projeto Homebrew\\LaTeX Modular}
+        
+        % Elementos principais (nível 1)
+        \docmaplevelone{pretextual}{30}{Elementos\\Pré-textuais}
+        \docmaplevelone{textual}{150}{Elementos\\Textuais}
+        \docmaplevelone{postextual}{270}{Elementos\\Pós-textuais}
+        
+        % Elementos pré-textuais (nível 2)
+        \docmapleveltwo{capa}{pretextual}{0}{Capa e Título}
+        \docmapleveltwo{toc}{pretextual}{60}{Sumário}
+        \docmapleveltwo{mapament}{pretextual}{120}{Mapa Mental}
+        
+        % Elementos textuais - Capítulos (nível 2)
+        \docmapleveltwo{cap1}{textual}{120}{Capítulo 1\\Introdução}
+        \docmapleveltwo{cap2}{textual}{180}{Capítulo 2\\Bibliografia}
+        \docmapleveltwo{cap3}{textual}{240}{Capítulo 3\\Glossário e Índice}
+        
+        % Elementos pós-textuais (nível 2)
+        \docmapleveltwo{ref}{postextual}{240}{Referências\\Bibliográficas}
+        \docmapleveltwo{gloss}{postextual}{300}{Glossário}
+        \docmapleveltwo{ind}{postextual}{340}{Índice Remissivo}
+        
+        % Conteúdo do Capítulo 1 (nível 3)
+        \docmaplevelthree{cap1_1}{cap1}{90}{Ambientes RPG}
+        \docmaplevelthree{cap1_2}{cap1}{150}{Comandos\\Personalizados}
+        \docmaplevelthree{cap1_3}{cap1}{210}{Mapas Mentais}
+        
+        % Conteúdo do Capítulo 2 (nível 3)
+        \docmaplevelthree{cap2_1}{cap2}{150}{Sistema de Citações}
+        \docmaplevelthree{cap2_2}{cap2}{210}{Referências Cruzadas}
+        
+        % Conteúdo do Capítulo 3 (nível 3)
+        \docmaplevelthree{cap3_1}{cap3}{210}{Glossário}
+        \docmaplevelthree{cap3_2}{cap3}{270}{Índice Remissivo}
+        
+        % Exemplos de nível 4 (detalhes mais específicos)
+        \docmaplevelfour{amb1}{cap1_1}{60}{Spell}
+        \docmaplevelfour{amb2}{cap1_1}{120}{Character}
+        \docmaplevelfour{amb3}{cap1_1}{180}{Rule}
+        
+        \docmaplevelfour{cmd1}{cap1_2}{120}{rpgnote}
+        \docmaplevelfour{cmd2}{cap1_2}{180}{rpgsection}
+        \docmaplevelfour{cmd3}{cap1_2}{240}{rpgitem}
+        
+        % Conteúdo do mapa mental (nível 4)
+        \docmaplevelfour{map1}{cap1_3}{120}{Estrutura\\Automática}
+        \docmaplevelfour{map2}{cap1_3}{180}{Mapas\\Personalizados}
+        \docmaplevelfour{map3}{cap1_3}{240}{Visualização\\Hierárquica}
+    
+    \end{docstructmap}
+    
+    \docmaplegend{
+        Este mapa mental apresenta a estrutura completa do documento, incluindo capítulos, 
+        seções e elementos específicos. Os níveis mais externos representam as divisões 
+        principais do documento, enquanto os níveis internos mostram os detalhes específicos
+        de cada seção.
+    }
+}
+
+% Comando para simplificar a geração rápida de um mapa mental personalizado
+\newcommand{\quickdocmap}[1]{%
+    \section*{Mapa da Estrutura: #1}
+    
+    \begin{docstructmap}
+        % Nó raiz personalizado
+        \docmaproot{#1}
+        
+        % Elementos principais predefinidos (nível 1) - podem ser adaptados conforme necessário
+        \docmaplevelone{introducao}{30}{Introdução}
+        \docmaplevelone{desenvolvimento}{150}{Desenvolvimento}
+        \docmaplevelone{conclusao}{270}{Conclusão}
+    \end{docstructmap}
+    
+    \docmaplegend{
+        Mapa mental simplificado para "#1". Este tipo de mapa pode ser usado
+        para planejar novos documentos ou visualizar conceitos específicos.
+    }
+}

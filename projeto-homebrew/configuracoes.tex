@@ -4,7 +4,7 @@
 \usepackage{graphicx}
 \usepackage{fancyhdr}
 \usepackage{titlesec}
-\usepackage{xcolor}
+\usepackage[usenames,dvipsnames]{xcolor}
 \usepackage{microtype}
 \usepackage{lipsum}
 \usepackage{tcolorbox}
@@ -18,15 +18,25 @@
 \usepackage{bookmark}
 \usepackage{float}
 \usepackage{lastpage}
-\usepackage{mdframed}
+\usepackage[framemethod=TikZ]{mdframed}
 \usepackage{subfig}
-\usepackage[usenames]{xcolor}
 \usepackage{csquotes}
 \usepackage{url}
 \usepackage{tabularx}
 \usepackage{verbatim}
 \usepackage{tocbibind}
 \usepackage{newfloat}
+\usepackage[useregional]{datetime2}
+\usepackage{ragged2e}
+\usepackage{marginnote}
+\usepackage{pifont}
+\usepackage{etoolbox}
+
+% Pacotes para mapa mental/estrutura do documento
+\usetikzlibrary{mindmap,trees,shadows,arrows,positioning}
+\usetikzlibrary{decorations.pathmorphing}
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{shapes.geometric}
 
 % Suporte a língua portuguesa
 \usepackage[brazilian]{babel}
@@ -68,6 +78,10 @@
 \definecolor{boxbg}{RGB}{253, 245, 196}
 \definecolor{boxborder}{RGB}{190, 150, 86}
 \definecolor{secaotitulo}{RGB}{140, 26, 20}
+\definecolor{spell}{RGB}{70, 26, 100}
+\definecolor{magicitem}{RGB}{26, 70, 100}
+\definecolor{rule}{RGB}{140, 20, 20}
+\definecolor{note}{RGB}{20, 100, 120}
 
 % Configuração de margens
 \geometry{
@@ -76,7 +90,9 @@
     bottom=2.5cm,
     left=3cm,
     right=3cm,
-    headheight=15pt
+    headheight=15pt,
+    marginparwidth=2.5cm,
+    marginparsep=0.5cm
 }
 
 % Configuração de espaçamento

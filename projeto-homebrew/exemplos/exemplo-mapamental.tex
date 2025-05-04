@@ -1,0 +1,149 @@
+% Exemplo de Uso dos Mapas Mentais no Projeto Homebrew
+% Este arquivo demonstra as diferentes formas de usar os mapas mentais no projeto
+
+\documentclass[12pt, a4paper]{book}
+
+% Carrega as configurações e ambientes personalizados
+\input{../configuracoes}
+\input{../ambientes}
+
+\begin{document}
+
+\rpgtitle{Exemplo de Mapas Mentais}
+
+\rpgsection{Introdução}
+
+Este documento demonstra as diversas formas de criar e usar mapas mentais para visualizar a estrutura do documento no Projeto Homebrew. Os mapas mentais ajudam leitores e autores a compreender a organização do conteúdo de forma visual e intuitiva.
+
+\rpgsection{Mapa Mental Pré-definido}
+
+Abaixo está o mapa mental pré-definido que apresenta uma estrutura típica de documento acadêmico:
+
+% Mapa da estrutura do documento
+\section*{Mapa do Documento}
+
+\begin{center}
+\begin{tikzpicture}[
+    mindmap,
+    level 1 concept/.append style={font=\large\bfseries, sibling angle=60, level distance=5cm},
+    level 2 concept/.append style={font=\normalsize\bfseries, sibling angle=45, level distance=3.5cm},
+    level 3 concept/.append style={font=\small, sibling angle=40, level distance=2.5cm},
+    concept/.append style={
+        text width=4cm, 
+        font=\bfseries, 
+        minimum size=2cm, 
+        fill=boxbg, 
+        text=secaotitulo, 
+        line width=1pt, 
+        draw=boxborder
+    },
+    concept connection/.append style={line width=1pt, draw=boxborder}
+]
+
+% Nó central/raiz - Título do documento
+\node[concept, font=\Large\bfseries, minimum size=3cm, fill=capa!40!boxbg, text=white] (doc) {Projeto Homebrew\\LaTeX Modular};
+
+% Elementos pré-textuais - Nível 1
+\node[concept, fill=spell!10!boxbg] (pretextual) [grow=30] at (doc.30) {Elementos Pré-textuais};
+
+% Elementos textuais - Nível 1
+\node[concept, fill=magicitem!10!boxbg] (textual) [grow=150] at (doc.150) {Elementos Textuais};
+
+% Elementos pós-textuais - Nível 1
+\node[concept, fill=rule!10!boxbg] (postextual) [grow=270] at (doc.270) {Elementos Pós-textuais};
+
+% Conexões do nó central aos nós de nível 1
+\path (doc) to[circle connection bar] (pretextual);
+\path (doc) to[circle connection bar] (textual);
+\path (doc) to[circle connection bar] (postextual);
+
+\end{tikzpicture}
+\end{center}
+
+\rpgsection{Mapa Mental Usando o Ambiente docstructmap}
+
+\begin{spell}
+Os comandos \texttt{\\docmaproot}, \texttt{\\docmaplevelone}, etc., facilitam a criação de mapas mentais sem precisar lidar diretamente com o código TikZ.
+\end{spell}
+
+Abaixo está um exemplo de mapa mental criado usando o ambiente \texttt{docstructmap} e os comandos relacionados:
+
+\begin{docstructmap}
+    % Nó raiz
+    \docmaproot{Projeto\\Dissertação}
+    
+    % Nós de nível 1
+    \docmaplevelone{metodologia}{30}{Metodologia}
+    \docmaplevelone{resultados}{150}{Resultados}
+    \docmaplevelone{conclusao}{270}{Conclusão}
+    
+    % Nós de nível 2
+    \docmapleveltwo{coleta}{metodologia}{0}{Coleta de Dados}
+    \docmapleveltwo{analise}{metodologia}{60}{Análise Estatística}
+    
+    \docmapleveltwo{primarios}{resultados}{120}{Resultados Primários}
+    \docmapleveltwo{secundarios}{resultados}{180}{Resultados Secundários}
+    
+    \docmapleveltwo{achados}{conclusao}{240}{Principais Achados}
+    \docmapleveltwo{futuro}{conclusao}{300}{Trabalhos Futuros}
+    
+    % Nós de nível 3
+    \docmaplevelthree{qualitativa}{coleta}{-30}{Análise Qualitativa}
+    \docmaplevelthree{quantitativa}{coleta}{30}{Análise Quantitativa}
+\end{docstructmap}
+
+\docmaplegend{
+    Este mapa mental mostra a estrutura típica de uma dissertação acadêmica,
+    destacando os principais componentes metodológicos, resultados e conclusões.
+}
+
+\rpgsection{Mapa Mental Complexo Gerado Automaticamente}
+
+O comando \texttt{\\generatecomplexdocmap} gera um mapa mental detalhado com vários níveis hierárquicos. Este mapa é definido no arquivo \texttt{ambientes/auto-docmap.tex} e pode ser personalizado conforme necessário.
+
+\generatecomplexdocmap
+
+\rpgsection{Mapa Mental Auto-gerado com Base na Estrutura Real}
+
+O comando \texttt{\\generateautodocmap} analisa a estrutura real do documento (seções, subseções, etc.) e gera um mapa mental dinamicamente. Este recurso é particularmente útil para documentos longos ou complexos.
+
+\generateautodocmap
+
+\rpgsection{Dicas de Uso}
+
+\begin{itemize}
+\rpgitem{Use mapas mentais no início de documentos longos para orientar o leitor}
+\rpgitem{Inclua mapas mentais específicos para cada capítulo principal, mostrando sua estrutura interna}
+\rpgitem{Combine mapas mentais estáticos e dinâmicos para diferentes propósitos}
+\rpgitem{Personalize as cores, formas e estilos para adequar-se ao tema do seu documento}
+\end{itemize}
+
+\begin{dmnote}
+Para documentos muito complexos, considere criar mapas mentais hierárquicos, com um mapa geral do documento e mapas específicos para cada seção principal.
+\end{dmnote}
+
+\rpgsection{Personalização Avançada}
+
+\begin{quotebox}
+"A visualização da estrutura de um documento é tão importante quanto o próprio conteúdo. Um bom mapa mental ajuda os leitores a navegar pelo documento e a compreender a relação entre as diferentes partes."
+\end{quotebox}
+
+Para personalização avançada dos mapas mentais, você pode modificar os arquivos:
+
+\begin{itemize}
+\rpgitem{\texttt{ambientes/docmap.tex} - Contém os comandos básicos e estilos para os mapas mentais}
+\rpgitem{\texttt{ambientes/auto-docmap.tex} - Contém a implementação da geração automática de mapas}
+\end{itemize}
+
+\begin{magicitem}
+\textbf{Dica Avançada}
+
+Você pode personalizar os estilos dos nós em cada nível alterando as definições de cores e estilos no arquivo \texttt{ambientes/docmap.tex}. Por exemplo:
+
+\begin{verbatim}
+\definecolor{level0color}{RGB}{121, 26, 25}  % Cor da raiz
+\definecolor{level1color}{RGB}{70, 26, 100}  % Cor do nível 1
+\end{verbatim}
+\end{magicitem}
+
+\end{document}

@@ -1,0 +1,272 @@
+% Exemplo de uso de mapas mentais em contexto de RPG
+% Este arquivo demonstra como usar a funcionalidade de mapas mentais para visualizar
+% estruturas de documentos relacionados a RPG, como aventuras, descrição de mundos, etc.
+
+\documentclass[12pt, a4paper]{book}
+
+% Carrega as configurações e ambientes personalizados
+\input{../configuracoes}
+\input{../ambientes}
+
+\begin{document}
+
+\rpgtitle{Mapas Mentais para Documentos de RPG}
+
+\rpgsection{Introdução}
+
+Este documento demonstra como os mapas mentais podem ser usados para visualizar e organizar documentos relacionados a RPG, como manuais de regras, aventuras, descrições de mundos e outros materiais de jogo.
+
+\begin{quotebox}
+"Um bom mestre de RPG é tanto um narrador quanto um organizador. As ferramentas visuais que ajudam na organização do material também ajudam na criação de histórias mais ricas e coerentes."
+\end{quotebox}
+
+\rpgsection{Mapa de Aventura}
+
+Abaixo está um mapa mental que estrutura uma aventura típica de RPG:
+
+\begin{docstructmap}
+    % Nó raiz
+    \docmaproot{Aventura:\\A Cripta\\Esquecida}
+    
+    % Partes principais da aventura (nível 1)
+    \docmaplevelone{introducao}{30}{Introdução}
+    \docmaplevelone{ato1}{90}{Ato I:\\Descoberta}
+    \docmaplevelone{ato2}{150}{Ato II:\\Exploração}
+    \docmaplevelone{ato3}{210}{Ato III:\\Confronto}
+    \docmaplevelone{apendices}{270}{Apêndices}
+    \docmaplevelone{npcs}{330}{Personagens\\Não-Jogadores}
+    
+    % Elementos da Introdução (nível 2)
+    \docmapleveltwo{gancho}{introducao}{0}{Ganchos de\\Aventura}
+    \docmapleveltwo{resumo}{introducao}{60}{Resumo da\\Trama}
+    
+    % Elementos do Ato I (nível 2)
+    \docmapleveltwo{cena1}{ato1}{60}{Cena 1:\\Vila Sombria}
+    \docmapleveltwo{cena2}{ato1}{120}{Cena 2:\\Descoberta\\do Mapa}
+    
+    % Elementos do Ato II (nível 2)
+    \docmapleveltwo{cena3}{ato2}{120}{Cena 3:\\Jornada Pela\\Floresta}
+    \docmapleveltwo{cena4}{ato2}{180}{Cena 4:\\Entrada da\\Cripta}
+    
+    % Elementos do Ato III (nível 2)
+    \docmapleveltwo{cena5}{ato3}{180}{Cena 5:\\Níveis\\Superiores}
+    \docmapleveltwo{cena6}{ato3}{240}{Cena 6:\\Confronto\\Final}
+    
+    % Elementos dos Apêndices (nível 2)
+    \docmapleveltwo{mapas}{apendices}{240}{Mapas e\\Diagramas}
+    \docmapleveltwo{tesouros}{apendices}{300}{Tesouros e\\Recompensas}
+    
+    % Elementos de NPCs (nível 2)
+    \docmapleveltwo{aliados}{npcs}{300}{Aliados}
+    \docmapleveltwo{inimigos}{npcs}{360}{Inimigos}
+    
+    % Detalhes de uma cena específica (nível 3)
+    \docmaplevelthree{enc1}{cena5}{150}{Encontro 1:\\Guardiões}
+    \docmaplevelthree{enc2}{cena5}{210}{Encontro 2:\\Armadilhas}
+    
+    \docmaplevelthree{enc3}{cena6}{210}{Encontro 3:\\Ritual}
+    \docmaplevelthree{enc4}{cena6}{270}{Encontro 4:\\Necromante}
+\end{docstructmap}
+
+\docmaplegend{
+    Este mapa mental apresenta a estrutura de uma aventura de RPG, mostrando a organização 
+    em atos e cenas, bem como os apêndices e personagens. Os nós de nível 3 mostram 
+    encontros específicos dentro das cenas principais.
+}
+
+\rpgsection{Mapa de Sistema de Regras}
+
+Os mapas mentais também são úteis para visualizar sistemas de regras:
+
+\begin{docstructmap}
+    % Nó raiz
+    \docmaproot{Sistema de\\Regras RPG}
+    
+    % Seções principais do sistema (nível 1)
+    \docmaplevelone{personagens}{30}{Criação de\\Personagens}
+    \docmaplevelone{combate}{90}{Sistema de\\Combate}
+    \docmaplevelone{magia}{150}{Magia e\\Habilidades}
+    \docmaplevelone{equipamento}{210}{Equipamento\\e Itens}
+    \docmaplevelone{mestre}{270}{Guia do\\Mestre}
+    \docmaplevelone{aventuras}{330}{Criação de\\Aventuras}
+    
+    % Elementos de Criação de Personagens (nível 2)
+    \docmapleveltwo{racas}{personagens}{0}{Raças}
+    \docmapleveltwo{classes}{personagens}{30}{Classes}
+    \docmapleveltwo{antecedentes}{personagens}{60}{Antecedentes}
+    
+    % Elementos de Combate (nível 2)
+    \docmapleveltwo{iniciativa}{combate}{60}{Iniciativa}
+    \docmapleveltwo{acoes}{combate}{90}{Ações}
+    \docmapleveltwo{dano}{combate}{120}{Dano e\\Cura}
+    
+    % Elementos de Magia (nível 2)
+    \docmapleveltwo{escolas}{magia}{120}{Escolas de\\Magia}
+    \docmapleveltwo{magias}{magia}{150}{Lista de\\Magias}
+    \docmapleveltwo{rituais}{magia}{180}{Rituais}
+    
+    % Detalhes específicos (nível 3)
+    \docmaplevelthree{guerreiro}{classes}{15}{Guerreiro}
+    \docmaplevelthree{mago}{classes}{45}{Mago}
+    
+    \docmaplevelthree{ataque}{acoes}{75}{Ação de\\Ataque}
+    \docmaplevelthree{movimento}{acoes}{105}{Ação de\\Movimento}
+\end{docstructmap}
+
+\docmaplegend{
+    Este mapa mental apresenta a estrutura de um sistema de regras de RPG, destacando
+    as principais seções e seus componentes. É particularmente útil para visualizar como
+    os diferentes elementos do sistema se relacionam entre si.
+}
+
+\rpgsection{Mapa de Construção de Mundo}
+
+Os mapas mentais são excelentes ferramentas para desenvolver e organizar informações sobre mundos de RPG:
+
+\begin{docstructmap}
+    % Nó raiz
+    \docmaproot{Reino de\\Valoria}
+    
+    % Elementos principais do mundo (nível 1)
+    \docmaplevelone{geografia}{30}{Geografia}
+    \docmaplevelone{historia}{90}{História}
+    \docmaplevelone{politica}{150}{Política}
+    \docmaplevelone{religiao}{210}{Religião}
+    \docmaplevelone{culturas}{270}{Povos e\\Culturas}
+    \docmaplevelone{magia}{330}{Magia e\\Tecnologia}
+    
+    % Elementos da Geografia (nível 2)
+    \docmapleveltwo{regioes}{geografia}{0}{Regiões}
+    \docmapleveltwo{cidades}{geografia}{60}{Cidades\\Principais}
+    
+    % Elementos da História (nível 2)
+    \docmapleveltwo{fundacao}{historia}{60}{Era da\\Fundação}
+    \docmapleveltwo{guerras}{historia}{120}{As Grandes\\Guerras}
+    
+    % Elementos de Política (nível 2)
+    \docmapleveltwo{reinos}{politica}{120}{Reinos e\\Facções}
+    \docmapleveltwo{comercio}{politica}{180}{Rotas\\Comerciais}
+    
+    % Elementos específicos de uma região (nível 3)
+    \docmaplevelthree{montanhas}{regioes}{-15}{Montanhas\\do Norte}
+    \docmaplevelthree{florestas}{regioes}{15}{Florestas\\do Leste}
+    \docmaplevelthree{deserto}{regioes}{45}{Deserto\\do Sul}
+    
+    % Cidades específicas (nível 3)
+    \docmaplevelthree{capital}{cidades}{45}{Alturan\\(Capital)}
+    \docmaplevelthree{porto}{cidades}{75}{Porto\\Marítimo}
+\end{docstructmap}
+
+\docmaplegend{
+    Este mapa mental apresenta a estrutura de um mundo de fantasia para RPG, organizando
+    suas principais características geográficas, históricas, políticas e culturais. Este tipo
+    de organização visual é especialmente útil para mestres criarem mundos coerentes.
+}
+
+\rpgsection{Mapa de Campanha}
+
+Para campanhas de longo prazo, um mapa mental ajuda a manter a visão do arco narrativo:
+
+\begin{docstructmap}
+    % Nó raiz
+    \docmaproot{Campanha:\\A Queda\\de Valoria}
+    
+    % Arcos principais da campanha (nível 1)
+    \docmaplevelone{arco1}{30}{Arco 1:\\Sombras\\Emergentes}
+    \docmaplevelone{arco2}{90}{Arco 2:\\Coalizão\\dos Reinos}
+    \docmaplevelone{arco3}{150}{Arco 3:\\O Ritual\\Perdido}
+    \docmaplevelone{arco4}{210}{Arco 4:\\Revelações\\Antigas}
+    \docmaplevelone{arco5}{270}{Arco 5:\\A Batalha\\Final}
+    \docmaplevelone{temas}{330}{Temas e\\Motivos}
+    
+    % Aventuras do Arco 1 (nível 2)
+    \docmapleveltwo{av1_1}{arco1}{0}{Aventura 1.1:\\Presságios}
+    \docmapleveltwo{av1_2}{arco1}{60}{Aventura 1.2:\\Investigação}
+    
+    % Aventuras do Arco 2 (nível 2)
+    \docmapleveltwo{av2_1}{arco2}{60}{Aventura 2.1:\\Diplomacia}
+    \docmapleveltwo{av2_2}{arco2}{120}{Aventura 2.2:\\Traição}
+    
+    % Elementos específicos de uma aventura (nível 3)
+    \docmaplevelthree{local1_1}{av1_1}{-15}{Localização:\\Vila de Pedra}
+    \docmaplevelthree{npcs1_1}{av1_1}{15}{NPCs:\\Oráculos}
+    
+    \docmaplevelthree{local1_2}{av1_2}{45}{Localização:\\Cavernas}
+    \docmaplevelthree{item1_2}{av1_2}{75}{Item-Chave:\\Amuleto}
+\end{docstructmap}
+
+\docmaplegend{
+    Este mapa mental apresenta a estrutura de uma campanha de RPG, organizando-a
+    em arcos narrativos e aventuras individuais. Este tipo de visualização ajuda o mestre
+    a manter a coerência narrativa ao longo de uma campanha extensa.
+}
+
+\rpgsection{Mapa de Classe de Personagem}
+
+Os mapas mentais também são úteis para visualizar as opções de uma classe de personagem:
+
+\begin{docstructmap}
+    % Nó raiz
+    \docmaproot{Mago}
+    
+    % Elementos principais da classe (nível 1)
+    \docmaplevelone{escolas}{30}{Escolas de\\Especialização}
+    \docmaplevelone{magias}{90}{Magias}
+    \docmaplevelone{habilidades}{150}{Habilidades\\de Classe}
+    \docmaplevelone{equipamento}{210}{Equipamento}
+    \docmaplevelone{progressao}{270}{Progressão\\de Nível}
+    \docmaplevelone{arquetipos}{330}{Arquetipos}
+    
+    % Escolas de Magia (nível 2)
+    \docmapleveltwo{evocacao}{escolas}{0}{Evocação}
+    \docmapleveltwo{abjuracao}{escolas}{30}{Abjuração}
+    \docmapleveltwo{ilusao}{escolas}{60}{Ilusão}
+    
+    % Níveis de Magia (nível 2)
+    \docmapleveltwo{nivel1}{magias}{60}{Nível 1}
+    \docmapleveltwo{nivel2}{magias}{90}{Nível 2}
+    \docmapleveltwo{nivel3}{magias}{120}{Nível 3}
+    
+    % Magias específicas (nível 3)
+    \docmaplevelthree{misseis}{nivel1}{45}{Mísseis\\Mágicos}
+    \docmaplevelthree{escudo}{nivel1}{75}{Escudo\\Arcano}
+    
+    \docmaplevelthree{invisibilidade}{nivel2}{75}{Invisibilidade}
+    \docmaplevelthree{levitacao}{nivel2}{105}{Levitação}
+\end{docstructmap}
+
+\docmaplegend{
+    Este mapa mental apresenta a estrutura de uma classe de personagem de RPG (Mago),
+    mostrando suas escolas de especialização, progressão de magias, habilidades e
+    equipamentos. É útil tanto para jogadores quanto para criadores de sistemas.
+}
+
+\rpgsection{Dicas para Uso Efetivo}
+
+\begin{rule}
+\textbf{Melhores Práticas para Mapas Mentais em RPG}
+
+\begin{enumerate}
+    \item \textbf{Priorize informações cruciais:} Mantenha o mapa focado nos elementos mais importantes
+    \item \textbf{Use cores significativas:} As cores podem indicar diferentes tipos de elementos (combate, narrativa, NPCs)
+    \item \textbf{Mantenha a consistência:} Use o mesmo estilo de organização em todos os mapas da sua obra
+    \item \textbf{Inclua referências cruzadas:} Indique nos nós quando há conexões com outras partes do documento
+    \item \textbf{Equilibre detalhes:} Nem muito complexo nem muito simples - encontre o equilíbrio ideal
+\end{enumerate}
+\end{rule}
+
+\rpgnote{Use mapas mentais no início de cada sessão da sua mesa de RPG para orientar os jogadores sobre o progresso da campanha e as opções disponíveis.}
+
+\begin{dmnote}
+Como mestre, você pode criar mapas mentais progressivos que vão revelando mais detalhes à medida que os jogadores exploram o mundo, adicionando novos nós conforme a campanha avança.
+\end{dmnote}
+
+\rpgsection{Conclusão}
+
+Os mapas mentais são ferramentas poderosas para mestres e criadores de conteúdo de RPG, ajudando a organizar informações complexas em formatos visualmente acessíveis. Seja para estruturar aventuras, sistemas de regras, mundos ou campanhas, esta técnica visual complementa perfeitamente o estilo visual do Projeto Homebrew.
+
+\begin{highlight}
+Experimente diferentes estilos e arranjos de mapas mentais para encontrar o formato que melhor funciona para o seu estilo de jogo e suas necessidades de documentação. A flexibilidade do sistema permite adaptações para qualquer tipo de conteúdo de RPG.
+\end{highlight}
+
+\end{document}

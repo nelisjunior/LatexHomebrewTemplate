@@ -1,0 +1,103 @@
+% Mapa da estrutura do documento
+\section*{Mapa do Documento}
+
+\begin{center}
+\begin{tikzpicture}[
+    mindmap,
+    level 1 concept/.append style={font=\large\bfseries, sibling angle=60, level distance=5cm},
+    level 2 concept/.append style={font=\normalsize\bfseries, sibling angle=45, level distance=3.5cm},
+    level 3 concept/.append style={font=\small, sibling angle=40, level distance=2.5cm},
+    concept/.append style={
+        text width=4cm, 
+        font=\bfseries, 
+        minimum size=2cm, 
+        fill=boxbg, 
+        text=secaotitulo, 
+        line width=1pt, 
+        draw=boxborder
+    },
+    concept connection/.append style={line width=1pt, draw=boxborder}
+]
+
+% Nó central/raiz - Título do documento
+\node[concept, font=\Large\bfseries, minimum size=3cm, fill=capa!40!boxbg, text=white] (doc) {Projeto Homebrew\\LaTeX Modular};
+
+% Elementos pré-textuais - Nível 1
+\node[concept, fill=spell!10!boxbg] (pretextual) [grow=30] at (doc.30) {Elementos Pré-textuais};
+
+% Elementos textuais - Nível 1
+\node[concept, fill=magicitem!10!boxbg] (textual) [grow=150] at (doc.150) {Elementos Textuais};
+
+% Elementos pós-textuais - Nível 1
+\node[concept, fill=rule!10!boxbg] (postextual) [grow=270] at (doc.270) {Elementos Pós-textuais};
+
+% Conexões do nó central aos nós de nível 1
+\path (doc) to[circle connection bar] (pretextual);
+\path (doc) to[circle connection bar] (textual);
+\path (doc) to[circle connection bar] (postextual);
+
+% Elementos pré-textuais - Nível 2
+\node[concept, fill=spell!5!boxbg] (title) [grow=0] at (pretextual.0) {Título e Capa};
+\node[concept, fill=spell!5!boxbg] (summary) [grow=90] at (pretextual.90) {Sumário};
+
+% Elementos textuais - Nível 2
+\node[concept, fill=magicitem!5!boxbg] (chap1) [grow=120] at (textual.120) {Capítulo 1\\Introdução};
+\node[concept, fill=magicitem!5!boxbg] (chap2) [grow=180] at (textual.180) {Capítulo 2\\Bibliografia};
+\node[concept, fill=magicitem!5!boxbg] (chap3) [grow=240] at (textual.240) {Capítulo 3\\Glossário e Índice};
+
+% Elementos pós-textuais - Nível 2
+\node[concept, fill=rule!5!boxbg] (refs) [grow=270] at (postextual.270) {Referências};
+\node[concept, fill=rule!5!boxbg] (glossary) [grow=320] at (postextual.320) {Glossário};
+\node[concept, fill=rule!5!boxbg] (index) [grow=220] at (postextual.220) {Índice Remissivo};
+
+% Conexões dos nós de nível 1 aos nós de nível 2
+\path (pretextual) to[circle connection bar] (title);
+\path (pretextual) to[circle connection bar] (summary);
+
+\path (textual) to[circle connection bar] (chap1);
+\path (textual) to[circle connection bar] (chap2);
+\path (textual) to[circle connection bar] (chap3);
+
+\path (postextual) to[circle connection bar] (refs);
+\path (postextual) to[circle connection bar] (glossary);
+\path (postextual) to[circle connection bar] (index);
+
+% Elementos do capítulo 1 - Nível 3
+\node[concept, scale=0.7, fill=magicitem!2!boxbg] (chap1_1) [grow=90] at (chap1.90) {Ambientes RPG};
+\node[concept, scale=0.7, fill=magicitem!2!boxbg] (chap1_2) [grow=150] at (chap1.150) {Comandos Personalizados};
+
+% Elementos do capítulo 2 - Nível 3
+\node[concept, scale=0.7, fill=magicitem!2!boxbg] (chap2_1) [grow=150] at (chap2.150) {Sistema de Citações};
+\node[concept, scale=0.7, fill=magicitem!2!boxbg] (chap2_2) [grow=210] at (chap2.210) {Referências Cruzadas};
+
+% Elementos do capítulo 3 - Nível 3
+\node[concept, scale=0.7, fill=magicitem!2!boxbg] (chap3_1) [grow=210] at (chap3.210) {Glossário};
+\node[concept, scale=0.7, fill=magicitem!2!boxbg] (chap3_2) [grow=270] at (chap3.270) {Índice Remissivo};
+
+% Conexões dos nós de nível 2 aos nós de nível 3
+\path (chap1) to[circle connection bar] (chap1_1);
+\path (chap1) to[circle connection bar] (chap1_2);
+
+\path (chap2) to[circle connection bar] (chap2_1);
+\path (chap2) to[circle connection bar] (chap2_2);
+
+\path (chap3) to[circle connection bar] (chap3_1);
+\path (chap3) to[circle connection bar] (chap3_2);
+
+\end{tikzpicture}
+\end{center}
+
+\vspace{1cm}
+
+\begin{center}
+\begin{tcolorbox}[
+    colback=boxbg,
+    colframe=boxborder,
+    width=0.8\textwidth,
+    arc=5mm,
+    boxrule=1mm,
+    title=Sobre este Mapa Mental
+]
+Este mapa mental apresenta a estrutura geral do documento, mostrando a organização hierárquica do conteúdo. Ele está dividido em três seções principais: elementos pré-textuais, textuais e pós-textuais, cada um contendo seus respectivos componentes.
+\end{tcolorbox}
+\end{center}

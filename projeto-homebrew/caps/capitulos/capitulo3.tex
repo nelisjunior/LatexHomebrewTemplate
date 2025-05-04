@@ -1,0 +1,121 @@
+% Conteúdo do Capítulo 3
+\section{Glossário e Índice Remissivo}
+
+Esta seção demonstra como utilizar o glossário e o índice remissivo no projeto.
+
+\subsection{Utilizando o Glossário}
+
+O glossário permite criar uma lista de termos importantes e suas definições. Para adicionar um termo ao glossário, use o comando:
+
+\begin{verbatim}
+\glossaryentry{termo}{definição}
+\end{verbatim}
+
+Exemplo de termos adicionados ao glossário:
+
+\glossaryentry{arcano}{Termo que se refere à magia ou conhecimento místico.}
+\glossaryentry{grimório}{Livro contendo feitiços, encantamentos e instruções mágicas.}
+\glossaryentry{runa}{Símbolo mágico utilizado em rituais e encantamentos.}
+
+Para referenciar um termo do glossário no texto, use \verb|\gls{termo}|. Por exemplo: 
+\gls{arcano}, \gls{grimório} e \gls{runa}.
+
+\subsection{Utilizando o Índice Remissivo}
+
+O índice remissivo permite que os leitores encontrem facilmente termos específicos no documento. Para adicionar um termo ao índice, use:
+
+\begin{verbatim}
+\index{termo}
+\end{verbatim}
+
+Exemplos de termos indexados:
+
+Magos\index{magos} são estudantes de magia\index{magia} arcana. Eles aprendem feitiços\index{feitiço} 
+através de estudo intenso e prática constante. Muitos magos mantêm grimórios\index{grimório} 
+onde registram seus conhecimentos arcanos\index{arcano}.
+
+Druidas\index{druida} são praticantes de magia\index{magia!natural} natural. Eles canalizam a 
+energia da natureza\index{natureza} e podem assumir formas animais\index{forma animal}.
+
+\subsection{Demonstração de Ambientes}
+
+\begin{spell}
+\textbf{Proteção Arcana}\\
+\textit{Abjuração de 2º nível}\\
+\textbf{Tempo de Conjuração:} 1 ação\\
+\textbf{Alcance:} Toque\\
+\textbf{Componentes:} V, S, M (um pequeno diamante)\\
+\textbf{Duração:} 1 hora
+
+Você toca uma criatura disposta e cria uma barreira mágica ao seu redor. Até o fim da duração, o alvo recebe +2 na CA e tem vantagem em testes de resistência contra magias.
+\end{spell}
+
+\rpgnote{Esta magia é especialmente útil antes de enfrentar criaturas que utilizam magias ofensivas.}
+
+\begin{magicitem}
+\textbf{Amuleto de Proteção}\\
+\textit{Item maravilhoso, raro (requer sintonização)}
+
+Enquanto estiver usando este amuleto, você recebe +1 nas jogadas de resistência e é imune a magias de adivinhação e efeitos sensoriais mágicos que detectariam sua presença.
+\end{magicitem}
+
+\begin{dmnote}
+Considere dar este item a personagens que enfrentarão inimigos com forte capacidade de rastreamento mágico ou que precisam realizar missões furtivas.
+\end{dmnote}
+
+\rpgsection{Lista de Atributos e Estatísticas}
+
+Aqui demonstramos como apresentar estatísticas de personagens usando os comandos personalizados:
+
+\stat{Força}{16}  \stat{Destreza}{14}  \stat{Constituição}{15}  
+
+\stat{Inteligência}{18}  \stat{Sabedoria}{12}  \stat{Carisma}{10}
+
+Barras de atributos também podem ser usadas para representar níveis de habilidade:
+
+\attrbar{Conjuração}{25}
+
+\attrbar{Combate}{15}
+
+\attrbar{Furtividade}{10}
+
+\begin{rule}
+\textbf{Sintonização com Itens Mágicos}
+
+Para sintonizar-se com um item, você deve passar 1 hora em contato físico ininterrupto com ele, concentrando-se nele e tentando compreender suas propriedades. Esta concentração pode ocorrer durante um descanso curto e não pode ser interrompida por nenhuma outra atividade.
+\end{rule}
+
+\rpgtitle{Tabela de Encontros Aleatórios}
+
+\begin{rpgtable}
+\begin{tabular}{|c|p{10cm}|}
+\hline
+\textbf{d20} & \textbf{Encontro} \\
+\hline
+1-3 & 1d4 bandidos tentando roubar viajantes \\
+\hline
+4-6 & Um mercador com carroça quebrada pedindo ajuda \\
+\hline
+7-10 & 1d6 lobos caçando na área \\
+\hline
+11-14 & Um druida realizando um ritual para purificar a terra \\
+\hline
+15-17 & Uma patrulha de 1d4+1 guardas da cidade \\
+\hline
+18-19 & Um mago errante estudando fenômenos mágicos locais \\
+\hline
+20 & Um dragão jovem sobrevoando a região \\
+\hline
+\end{tabular}
+\end{rpgtable}
+
+\begin{quotebox}
+"A verdadeira magia consiste em compreender a conexão entre todas as coisas, visíveis e invisíveis. Não é apenas poder, mas sabedoria."
+
+— Arquimago Elminster
+\end{quotebox}
+
+\begin{highlight}
+\textbf{Dica importante para jogadores:} 
+Sempre verifique portas, baús e outros objetos suspeitos em busca de armadilhas antes de interagir com eles. Uma simples verificação pode salvar sua vida!
+\end{highlight}

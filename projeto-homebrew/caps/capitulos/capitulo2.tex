@@ -1,0 +1,79 @@
+% Conteúdo do Capítulo 2
+\section{Bibliografia e Referências}
+
+Este capítulo demonstra como trabalhar com bibliografia e referências no modelo.
+
+\subsection{Sistema de Citações}
+
+O modelo utiliza o pacote biblatex para gerenciamento de referências. Isso permite citar obras de forma consistente e gerar uma bibliografia formatada automaticamente.
+
+\begin{rule}
+\textbf{Citações no Texto}
+
+Para citar uma referência no texto, utilize o comando \texttt{\\cite\{chave\}}, onde \texttt{chave} corresponde ao identificador da referência no arquivo \texttt{referencias.bib}.
+\end{rule}
+
+Por exemplo, podemos citar a obra seminal de Donald Knuth sobre tipografia digital \cite{knuth1984texbook} ou discutir as contribuições de Leslie Lamport para o LaTeX \cite{lamport1994latex}.
+
+\rpgnote{O estilo de citação pode ser modificado alterando o parâmetro \texttt{style} na configuração do pacote biblatex em \texttt{configuracoes.tex}.}
+
+\subsection{Gerenciando o Arquivo de Referências}
+
+O arquivo \texttt{referencias.bib} contém todas as entradas bibliográficas no formato BibTeX. Cada entrada segue um padrão como este:
+
+\begin{verbatim}
+@book{knuth1984texbook,
+  title={The TeXbook},
+  author={Knuth, Donald E},
+  year={1984},
+  publisher={Addison-Wesley}
+}
+\end{verbatim}
+
+\begin{dmnote}
+Recomenda-se utilizar ferramentas como JabRef, Zotero ou Mendeley para gerenciar suas referências bibliográficas. Estas ferramentas permitem exportar entradas no formato BibTeX diretamente para o arquivo \texttt{referencias.bib}.
+\end{dmnote}
+
+\subsection{Tipos de Citações}
+
+Existem diferentes formas de citar referências:
+
+\begin{rpgtable}
+\begin{tabular}{|l|l|p{8cm}|}
+\hline
+\textbf{Comando} & \textbf{Exemplo} & \textbf{Resultado} \\
+\hline
+\texttt{\\cite\{chave\}} & \texttt{\\cite\{lamport1994latex\}} & Citação padrão \cite{lamport1994latex} \\
+\hline
+\texttt{\\parencite\{chave\}} & \texttt{\\parencite\{knuth1984texbook\}} & Citação entre parênteses \parencite{knuth1984texbook} \\
+\hline
+\texttt{\\textcite\{chave\}} & \texttt{\\textcite\{lamport1994latex\}} & Citação no texto \textcite{lamport1994latex} \\
+\hline
+\texttt{\\footcite\{chave\}} & \texttt{\\footcite\{knuth1984texbook\}} & Citação em nota de rodapé\footcite{knuth1984texbook} \\
+\hline
+\end{tabular}
+\end{rpgtable}
+
+\subsection{Referências Cruzadas}
+
+Além de referências bibliográficas, o LaTeX permite criar referências cruzadas dentro do seu próprio documento.
+
+\begin{spell}
+\textbf{Mecanismo de Referências Cruzadas}\\
+\textit{*Feature de nível 3*}
+
+Para criar uma referência cruzada, primeiro rotule um elemento com \texttt{\\label\{identificador\}} e depois referencie-o usando \texttt{\\ref\{identificador\}}.
+\end{spell}
+
+Por exemplo, podemos rotular esta seção com \label{sec:refcruzadas} e referenciá-la como "Seção \ref{sec:refcruzadas}".
+
+\begin{highlight}
+\textbf{Dica importante:} 
+Sempre compile seu documento pelo menos duas vezes para garantir que todas as referências cruzadas sejam resolvidas corretamente. Na primeira compilação, o LaTeX identifica os rótulos e suas posições; na segunda, ele substitui as referências pelos números corretos.
+\end{highlight}
+
+\begin{quotebox}
+"O verdadeiro poder do LaTeX está em sua capacidade de gerenciar automaticamente aspectos como numeração, referências e formatação bibliográfica, permitindo que o autor se concentre exclusivamente no conteúdo."
+
+— Um entusiasta do LaTeX
+\end{quotebox}

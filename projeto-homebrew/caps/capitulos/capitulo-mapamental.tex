@@ -1,0 +1,243 @@
+% Capítulo especializado sobre Mapas Mentais
+\section{Mapas Mentais para Visualização da Estrutura do Documento}
+
+O Projeto Homebrew inclui um sistema completo para geração de mapas mentais para visualizar a estrutura do documento. Este capítulo apresenta exemplos práticos e diretrizes para o uso efetivo desses mapas.
+
+\subsection{O Que São Mapas Mentais de Estrutura}
+
+Os mapas mentais são representações visuais que organizam informações de forma hierárquica, radiando a partir de um conceito central. No contexto da estruturação de documentos, eles ajudam a visualizar a organização geral e as relações entre diferentes partes do texto.
+
+\rpgnote{Um mapa mental bem construído pode servir tanto como guia inicial para o leitor quanto como ferramenta de planejamento para o autor.}
+
+\begin{dmnote}
+Os mapas mentais são especialmente úteis em documentos complexos com muitos níveis hierárquicos, como teses, dissertações e livros técnicos.
+\end{dmnote}
+
+\subsection{Tipos de Mapas Mentais no Projeto Homebrew}
+
+O sistema oferece três abordagens principais para criação de mapas mentais:
+
+\begin{itemize}
+\rpgitem{Mapas pré-definidos, que seguem uma estrutura padrão de documento acadêmico}
+\rpgitem{Mapas automáticos, gerados a partir da estrutura real do documento}
+\rpgitem{Mapas personalizados, criados manualmente para visualizar conceitos específicos}
+\end{itemize}
+
+\subsubsection{Mapas Pré-definidos}
+
+Para incluir um mapa mental pré-definido em seu documento, basta utilizar o comando \texttt{\\generatecomplexdocmap}:
+
+\begin{spell}
+\textbf{Exemplo de Código}
+
+\begin{verbatim}
+% No arquivo .tex:
+\clearpage
+\generatecomplexdocmap
+\clearpage
+\end{verbatim}
+
+Este comando gerará um mapa mental detalhado com a estrutura típica de um documento acadêmico.
+\end{spell}
+
+\subsubsection{Mapas Automáticos}
+
+Os mapas automáticos são mais dinâmicos e são gerados a partir da estrutura real do documento:
+
+\begin{spell}
+\textbf{Exemplo de Código para Mapa Automático}
+
+\begin{verbatim}
+% No arquivo .tex:
+\clearpage
+\generateautodocmap
+\clearpage
+\end{verbatim}
+
+Este comando analisa a estrutura atual do documento (suas seções, subseções, etc.) e cria um mapa visual correspondente.
+\end{spell}
+
+\rpgnote{Para que o mapa automático funcione corretamente, ele deve ser colocado no documento após as seções que deseja mapear.}
+
+\subsubsection{Mapas Personalizados}
+
+Para casos mais específicos, você pode criar mapas mentais personalizados:
+
+\begin{spell}
+\textbf{Exemplo de Código para Mapa Personalizado}
+
+\begin{verbatim}
+\begin{docstructmap}
+    % Nó raiz
+    \docmaproot{Título Principal}
+    
+    % Nós de primeiro nível
+    \docmaplevelone{id1}{30}{Tópico 1}
+    \docmaplevelone{id2}{150}{Tópico 2}
+    \docmaplevelone{id3}{270}{Tópico 3}
+    
+    % Nós de segundo nível
+    \docmapleveltwo{id1_1}{id1}{0}{Subtópico 1.1}
+    \docmapleveltwo{id2_1}{id2}{150}{Subtópico 2.1}
+\end{docstructmap}
+
+\docmaplegend{
+    Texto explicativo sobre este mapa mental.
+}
+\end{verbatim}
+\end{spell}
+
+\subsection{Exemplos Práticos}
+
+\subsubsection{Mapa Mental para Planejamento de Tese}
+
+Um exemplo de uso prático é o planejamento visual de uma tese:
+
+\begin{docstructmap}
+    % Nó raiz
+    \docmaproot{Tese de\\Doutorado}
+    
+    % Capítulos principais (nível 1)
+    \docmaplevelone{introducao}{30}{Introdução}
+    \docmaplevelone{revisao}{90}{Revisão de\\Literatura}
+    \docmaplevelone{metodologia}{150}{Metodologia}
+    \docmaplevelone{resultados}{210}{Resultados}
+    \docmaplevelone{discussao}{270}{Discussão}
+    \docmaplevelone{conclusao}{330}{Conclusão}
+    
+    % Elementos da Introdução (nível 2)
+    \docmapleveltwo{contexto}{introducao}{0}{Contextualização}
+    \docmapleveltwo{problema}{introducao}{40}{Problema de\\Pesquisa}
+    \docmapleveltwo{objetivos}{introducao}{80}{Objetivos}
+    
+    % Elementos da Metodologia (nível 2)
+    \docmapleveltwo{desenho}{metodologia}{130}{Desenho do\\Estudo}
+    \docmapleveltwo{amostra}{metodologia}{150}{Amostragem}
+    \docmapleveltwo{analise}{metodologia}{170}{Análise de\\Dados}
+    
+    % Elementos do Resultado (nível 2)
+    \docmapleveltwo{res1}{resultados}{190}{Resultado 1}
+    \docmapleveltwo{res2}{resultados}{210}{Resultado 2}
+    \docmapleveltwo{res3}{resultados}{230}{Resultado 3}
+    
+    % Elementos de um resultado específico (nível 3)
+    \docmaplevelthree{res1_1}{res1}{180}{Achado 1.1}
+    \docmaplevelthree{res1_2}{res1}{200}{Achado 1.2}
+\end{docstructmap}
+
+\docmaplegend{
+    Este mapa mental ilustra a estrutura típica de uma tese de doutorado, destacando os capítulos 
+    principais e detalhando especialmente as seções de Introdução, Metodologia e Resultados.
+}
+
+\subsubsection{Mapa Mental para Visualização de Conceitos}
+
+Os mapas mentais também podem ser usados para visualizar conceitos teóricos:
+
+\begin{docstructmap}
+    % Nó raiz
+    \docmaproot{Teoria da\\Aprendizagem}
+    
+    % Principais teorias (nível 1)
+    \docmaplevelone{comportamental}{30}{Comportamentalismo}
+    \docmaplevelone{cognitiva}{150}{Cognitivismo}
+    \docmaplevelone{construtivista}{270}{Construtivismo}
+    
+    % Teóricos do comportamentalismo (nível 2)
+    \docmapleveltwo{pavlov}{comportamental}{0}{Pavlov}
+    \docmapleveltwo{skinner}{comportamental}{60}{Skinner}
+    
+    % Conceitos do cognitivismo (nível 2)
+    \docmapleveltwo{esquemas}{cognitiva}{120}{Esquemas\\Mentais}
+    \docmapleveltwo{memoria}{cognitiva}{180}{Memória\\de Trabalho}
+    
+    % Vertentes do construtivismo (nível 2)
+    \docmapleveltwo{piaget}{construtivista}{240}{Piaget}
+    \docmapleveltwo{vygotsky}{construtivista}{300}{Vygotsky}
+    
+    % Conceitos específicos (nível 3)
+    \docmaplevelthree{condclass}{pavlov}{-15}{Condicionamento\\Clássico}
+    \docmaplevelthree{condoper}{skinner}{75}{Condicionamento\\Operante}
+\end{docstructmap}
+
+\docmaplegend{
+    Este mapa mental apresenta as principais teorias da aprendizagem, seus principais 
+    representantes e alguns conceitos centrais de cada abordagem teórica.
+}
+
+\subsection{Dicas para Criação de Mapas Mentais Efetivos}
+
+\begin{rule}
+\textbf{Princípios para Criação de Mapas Mentais Efetivos}
+
+\begin{enumerate}
+    \item \textbf{Hierarquia clara:} Mantenha uma estrutura hierárquica bem definida
+    \item \textbf{Concisão:} Use palavras-chave ou frases curtas nos nós
+    \item \textbf{Equilíbrio visual:} Distribua os nós de forma equilibrada
+    \item \textbf{Profundidade adequada:} Limite-se a 3-4 níveis para evitar poluição visual
+    \item \textbf{Legendas explicativas:} Inclua sempre uma legenda explicativa
+\end{enumerate}
+\end{rule}
+
+\rpgnote{Para mapas muito complexos, considere dividir em múltiplos mapas menores, cada um focando em uma parte específica da estrutura.}
+
+\subsection{Integração com o Fluxo do Documento}
+
+Os mapas mentais podem ser integrados em diferentes pontos do documento:
+
+\begin{itemize}
+\rpgitem{No início, como visão geral da estrutura completa}
+\rpgitem{No início de cada capítulo, mostrando a estrutura específica daquela seção}
+\rpgitem{Em apêndices, para visualizar conceitos complexos}
+\end{itemize}
+
+\begin{quotebox}
+"Um mapa mental bem construído é como um mapa de navegação para o leitor. Ele mostra não apenas onde cada conteúdo está localizado, mas também como os diferentes elementos se relacionam entre si, criando um entendimento holístico da obra."
+\end{quotebox}
+
+\subsection{Caso de Uso: Mapa Mental para Planejamento de Escrita}
+
+Um uso particularmente valioso dos mapas mentais é o planejamento do processo de escrita:
+
+\begin{docstructmap}
+    % Nó raiz
+    \docmaproot{Processo de\\Escrita}
+    
+    % Fases principais (nível 1)
+    \docmaplevelone{planejamento}{30}{Planejamento}
+    \docmaplevelone{primeira}{150}{Primeira\\Versão}
+    \docmaplevelone{revisao}{270}{Revisão e\\Finalização}
+    
+    % Elementos do planejamento (nível 2)
+    \docmapleveltwo{tema}{planejamento}{0}{Definição\\do Tema}
+    \docmapleveltwo{pesquisa}{planejamento}{60}{Pesquisa\\Bibliográfica}
+    
+    % Elementos da primeira versão (nível 2)
+    \docmapleveltwo{rascunho}{primeira}{120}{Rascunho\\Inicial}
+    \docmapleveltwo{expansao}{primeira}{180}{Expansão\\de Ideias}
+    
+    % Elementos da revisão (nível 2)
+    \docmapleveltwo{revisao1}{revisao}{240}{Revisão\\de Conteúdo}
+    \docmapleveltwo{revisao2}{revisao}{300}{Revisão\\de Forma}
+    
+    % Elementos específicos (nível 3)
+    \docmaplevelthree{bib}{pesquisa}{30}{Seleção de\\Bibliografia}
+    \docmaplevelthree{notas}{pesquisa}{90}{Tomada\\de Notas}
+    
+    \docmaplevelthree{gramatical}{revisao2}{270}{Revisão\\Gramatical}
+    \docmaplevelthree{formatacao}{revisao2}{330}{Formatação\\e Estilo}
+\end{docstructmap}
+
+\docmaplegend{
+    Este mapa mental apresenta o processo de escrita acadêmica, destacando as principais
+    fases e atividades em cada etapa. Pode ser usado como guia para organizar o trabalho
+    de redação de um documento acadêmico.
+}
+
+\section{Conclusão}
+
+Os mapas mentais são uma ferramenta poderosa para visualização da estrutura do documento, planejamento da escrita e organização de conceitos complexos. O sistema implementado no Projeto Homebrew oferece flexibilidade para criar diferentes tipos de mapas, desde estruturas predefinidas até visualizações completamente personalizadas.
+
+\begin{highlight}
+Para mais detalhes sobre a implementação técnica e opções avançadas de personalização, consulte o arquivo de documentação \texttt{docs/tutorial-mapamental.md} e os exemplos em \texttt{exemplos/exemplo-mapamental.tex}.
+\end{highlight}

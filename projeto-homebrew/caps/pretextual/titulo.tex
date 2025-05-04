@@ -1,0 +1,50 @@
+% Página de título personalizada
+\begin{titlepage}
+    \pagecolor{pergaminho}
+    \begin{center}
+        \vspace*{2cm}
+        
+        {\color{titulo}\fontsize{24}{28}\selectfont \textbf{Modelo LaTeX Modular com Estilo RPG}}
+        
+        \vspace{1cm}
+        
+        {\color{secaotitulo}\Large Combinando Estética RPG com Rigor Acadêmico}
+        
+        \vspace{1.5cm}
+        
+        \begin{tcolorbox}[
+            colback=boxbg,
+            colframe=boxborder,
+            width=0.8\textwidth,
+            arc=5mm,
+            boxrule=1mm
+        ]
+            \begin{center}
+                {\large\textbf{Projeto Homebrew}}
+                
+                \vspace{0.5cm}
+                
+                Um modelo LaTeX para documentação acadêmica\\
+                com estética visual inspirada em livros de RPG
+                
+                \vspace{0.5cm}
+                
+                \DTMtoday
+            \end{center}
+        \end{tcolorbox}
+        
+        \vfill
+        
+        \begin{tikzpicture}
+            \node[draw=boxborder, fill=boxbg, line width=1pt, inner sep=10pt] 
+                 {\large\textit{Para uso em trabalhos acadêmicos, manuais,\\
+                 documentações técnicas e livros de RPG}};
+        \end{tikzpicture}
+        
+        \vspace{1cm}
+    \end{center}
+\end{titlepage}
+
+% Reset page color after title page
+\newpage
+\pagecolor{pergaminho}

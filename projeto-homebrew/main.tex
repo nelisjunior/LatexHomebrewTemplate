@@ -4,8 +4,9 @@
     twoside,                  % para impressão em verso e anverso
     openany,                  % capítulos podem começar em qualquer página
     a4paper,                  % tamanho do papel
-    chapter=TITLE,            % títulos de capítulos em maiúsculas
-    brazil                    % idioma principal
+    brazil,                   % idioma principal
+    english,                  % idioma adicional
+    french                    % idioma adicional
 ]{article}
 
 % Importação das configurações e pacotes
@@ -31,6 +32,9 @@
 
 % Componentes pós-textuais
 \input{2-postextual}
+
+% Imprimir o glossário
+\printglossary[title=Glossário de Termos]
 
 % Imprimir o índice remissivo
 \printindex

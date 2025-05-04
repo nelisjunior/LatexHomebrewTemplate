@@ -37,6 +37,7 @@
 % Ambiente para descrição de itens mágicos
 \newtcolorbox{magicitem}[1][]{
     common,
+    colbacktitle=magicitem,
     title=Item Mágico,
     #1
 }
@@ -44,7 +45,7 @@
 % Ambiente para feitiços
 \newtcolorbox{spell}[1][]{
     common,
-    colbacktitle={rgb:blue,2;green,1;red,6},
+    colbacktitle=spell,
     title=Feitiço,
     #1
 }
@@ -52,7 +53,7 @@
 % Ambiente para personagens
 \newtcolorbox{character}[1][]{
     common,
-    colbacktitle={rgb:red,2;green,2;blue,0},
+    colbacktitle=Brown!80!black,
     title=Personagem,
     #1
 }
@@ -60,7 +61,7 @@
 % Ambiente para notas do mestre
 \newtcolorbox{dmnote}[1][]{
     common,
-    colbacktitle={rgb:red,0;green,3;blue,5},
+    colbacktitle=note,
     title=Nota do Mestre,
     #1
 }
@@ -68,7 +69,7 @@
 % Ambiente para regras
 \newtcolorbox{rule}[1][]{
     common,
-    colbacktitle={rgb:red,4;green,0;blue,0},
+    colbacktitle=rule,
     title=Regra,
     #1
 }
@@ -76,7 +77,7 @@
 % Ambiente para tabelas
 \newtcolorbox{rpgtable}[1][]{
     common,
-    colbacktitle={rgb:black,1;yellow,0.1},
+    colbacktitle=Mahogany!70!black,
     title=Tabela,
     #1
 }
@@ -85,7 +86,7 @@
 \newtcolorbox{quotebox}[1][]{
     common,
     fonttitle=\itshape\large,
-    colbacktitle={rgb:gray,3;black,1},
+    colbacktitle=Gray!70!black,
     title=Citação,
     #1
 }
@@ -93,7 +94,7 @@
 % Ambiente para destaque
 \newtcolorbox{highlight}[1][]{
     common,
-    colbacktitle={rgb:orange,5;yellow,1},
+    colbacktitle=Orange!70!black,
     title=Destaque,
     #1
 }
@@ -122,6 +123,11 @@
     \endgroup
 }
 
+% Comando para criar listas de itens estilizadas
+\newcommand{\rpgitem}[1]{%
+    \item[\textcolor{secaotitulo}{\small\ding{108}}] #1
+}
+
 % Comando para titulos estilizados
 \newcommand{\rpgtitle}[1]{%
     \begin{center}
@@ -141,6 +147,14 @@
     }%
 }
 
+% Comando para adição de glossário
+\newcommand{\glossaryentry}[2]{%
+    \newglossaryentry{#1}{%
+        name=#1,%
+        description={#2}%
+    }%
+}
+
 % Comando para encabezamento de seção RPG
 \newcommand{\rpgsection}[1]{%
     \vspace{0.5cm}
@@ -152,3 +166,7 @@
     \end{center}
     \vspace{0.3cm}
 }
+
+% Importação dos ambientes para mapa mental de estrutura do documento
+\input{ambientes/docmap}
+\input{ambientes/auto-docmap}
