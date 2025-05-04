@@ -1,0 +1,38 @@
+% Configurações específicas para compilação no Overleaf
+% Inclua este arquivo no seu main.tex para resolver problemas de compilação
+
+% Verificar e carregar pacotes necessários para os mapas mentais
+\usepackage{tikz}
+\usetikzlibrary{mindmap,trees,shadows,arrows,positioning}
+\usetikzlibrary{decorations.pathmorphing}
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{shapes.geometric}
+
+% Pacotes necessários para manipulação de listas e strings
+\usepackage{etoolbox}
+\usepackage{xstring}
+
+% Em caso de erro no comando \protected@edef, descomente esta linha:
+% \makeatletter\let\protected@edef\edef\makeatother
+
+% Desativação temporária de recursos avançados para verificação
+% Se o mapa mental automático estiver causando problemas, descomente esta linha:
+% \newcommand{\generateautodocmap}{\textbf{[Mapa mental automático desativado temporariamente]}}
+
+% Se o mapa mental complexo estiver causando problemas, descomente esta linha:
+% \newcommand{\generatecomplexdocmap}{\textbf{[Mapa mental complexo desativado temporariamente]}}
+
+% Se o ambiente docstructmap estiver causando problemas, descomente este bloco:
+%\renewenvironment{docstructmap}[1][]
+%  {\begin{center}\textbf{[Visualização de mapa mental]}\\}
+%  {\end{center}}
+%\newcommand{\docmaproot}[2][]{#2}
+%\newcommand{\docmaplevelone}[4][]{#4}
+%\newcommand{\docmapleveltwo}[5][]{#5}
+%\newcommand{\docmaplevelthree}[5][]{#5}
+%\newcommand{\docmaplevelfour}[5][]{#5}
+%\newcommand{\docmaplegend}[1]{#1}
+
+% Nota: Ative as linhas acima conforme necessário para identificar a fonte dos problemas
+% Uma vez identificado, você pode resolver os problemas específicos ao invés de
+% desativar funcionalidades inteiras.

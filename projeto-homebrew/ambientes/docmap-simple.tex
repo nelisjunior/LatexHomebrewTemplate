@@ -1,0 +1,185 @@
+% Versão simplificada dos mapas mentais para maior compatibilidade
+% Este arquivo fornece uma versão mais leve e compatível com Overleaf
+
+% Definição de cores para os diferentes níveis do mapa mental
+\definecolor{level0color}{RGB}{121, 26, 25}  % Raiz (capa)
+\definecolor{level1color}{RGB}{70, 26, 100}  % Nível 1 (spell)
+\definecolor{level2color}{RGB}{26, 70, 100}  % Nível 2 (magicitem)
+\definecolor{level3color}{RGB}{140, 20, 20}  % Nível 3 (rule)
+
+% Ambiente para o mapa mental da estrutura do documento
+\newenvironment{docstructmap}[1][]{%
+    \begin{center}
+    \begin{tikzpicture}[
+        mindmap,
+        level 1/.style={font=\large\bfseries, sibling angle=60, level distance=5cm},
+        level 2/.style={font=\normalsize\bfseries, sibling angle=45, level distance=3.5cm},
+        level 3/.style={font=\small, sibling angle=40, level distance=2.5cm},
+        level 4/.style={font=\scriptsize, sibling angle=30, level distance=2cm},
+        every node/.style={
+            text width=4cm, 
+            font=\bfseries, 
+            minimum size=2cm, 
+            fill=boxbg, 
+            text=secaotitulo, 
+            line width=1pt, 
+            draw=boxborder
+        },
+        every edge/.style={line width=1pt, draw=boxborder}
+    ]
+}{%
+    \end{tikzpicture}
+    \end{center}
+}
+
+% Comando para adicionar o nó raiz do mapa mental
+\newcommand{\docmaproot}[2][]{%
+    \node[font=\Large\bfseries, minimum size=3cm, fill=level0color!40!boxbg, text=white, #1] (docroot) {#2};
+}
+
+% Comando para adicionar um nó de nível 1
+\newcommand{\docmaplevelone}[4][]{%
+    % #1 = opções adicionais
+    % #2 = ID do nó
+    % #3 = ângulo de crescimento
+    % #4 = conteúdo do nó
+    \node[fill=level1color!10!boxbg, #1] (#2) at (\thesection*#3:5cm) {#4};
+    \draw[->] (docroot) -- (#2);
+}
+
+% Comando para adicionar um nó de nível 2
+\newcommand{\docmapleveltwo}[5][]{%
+    % #1 = opções adicionais
+    % #2 = ID do nó
+    % #3 = ID do nó pai
+    % #4 = ângulo de crescimento
+    % #5 = conteúdo do nó
+    \node[fill=level2color!5!boxbg, #1] (#2) at (#3) ++(\thesection*#4:3.5cm) {#5};
+    \draw[->] (#3) -- (#2);
+}
+
+% Comando para adicionar um nó de nível 3
+\newcommand{\docmaplevelthree}[5][]{%
+    % #1 = opções adicionais
+    % #2 = ID do nó
+    % #3 = ID do nó pai
+    % #4 = ângulo de crescimento
+    % #5 = conteúdo do nó
+    \node[scale=0.7, fill=level3color!3!boxbg, #1] (#2) at (#3) ++(\thesection*#4:2.5cm) {#5};
+    \draw[->] (#3) -- (#2);
+}
+
+% Comando para adicionar um nó de nível 4
+\newcommand{\docmaplevelfour}[5][]{%
+    % #1 = opções adicionais
+    % #2 = ID do nó
+    % #3 = ID do nó pai
+    % #4 = ângulo de crescimento
+    % #5 = conteúdo do nó
+    \node[scale=0.5, fill=level3color!2!boxbg, #1] (#2) at (#3) ++(\thesection*#4:2cm) {#5};
+    \draw[->] (#3) -- (#2);
+}
+
+% Comando para criar uma legenda para o mapa mental
+\newcommand{\docmaplegend}[1][]{%
+    \begin{center}
+    \begin{tcolorbox}[
+        colback=boxbg,
+        colframe=boxborder,
+        width=0.8\textwidth,
+        arc=5mm,
+        boxrule=1mm,
+        title=Sobre este Mapa Mental
+    ]
+    #1
+    \end{tcolorbox}
+    \end{center}
+}
+
+% Comandos simplificados para gerar mapas mentais
+\newcommand{\generateautodocmap}{%
+    \section*{Mapa da Estrutura do Documento}
+    
+    \begin{docstructmap}
+        % Nó raiz - Documento principal
+        \docmaproot{Projeto Homebrew\\LaTeX Modular}
+        
+        % Elementos principais (nível 1)
+        \docmaplevelone{pretextual}{1}{Elementos\\Pré-textuais}
+        \docmaplevelone{textual}{3}{Elementos\\Textuais}
+        \docmaplevelone{postextual}{5}{Elementos\\Pós-textuais}
+        
+        % Elementos textuais - Capítulos (nível 2)
+        \docmapleveltwo{cap1}{textual}{2}{Capítulo 1\\Introdução}
+        \docmapleveltwo{cap2}{textual}{3}{Capítulo 2\\Conteúdo}
+        \docmapleveltwo{cap3}{textual}{4}{Capítulo 3\\Conclusão}
+    \end{docstructmap}
+    
+    \docmaplegend{
+        Este mapa mental foi gerado automaticamente e mostra a estrutura básica do documento.
+        A versão simplificada é projetada para maior compatibilidade com diversos sistemas LaTeX.
+    }
+}
+
+% Comando simplificado para mapa mental complexo
+\newcommand{\generatecomplexdocmap}{%
+    \section*{Mapa da Estrutura do Documento}
+    
+    \begin{docstructmap}
+        % Nó raiz - Documento principal
+        \docmaproot{Projeto Homebrew\\LaTeX Modular}
+        
+        % Elementos principais (nível 1)
+        \docmaplevelone{pretextual}{1}{Elementos\\Pré-textuais}
+        \docmaplevelone{textual}{3}{Elementos\\Textuais}
+        \docmaplevelone{postextual}{5}{Elementos\\Pós-textuais}
+        
+        % Elementos pré-textuais (nível 2)
+        \docmapleveltwo{capa}{pretextual}{0}{Capa e Título}
+        \docmapleveltwo{toc}{pretextual}{1}{Sumário}
+        \docmapleveltwo{mapament}{pretextual}{2}{Mapa Mental}
+        
+        % Elementos textuais - Capítulos (nível 2)
+        \docmapleveltwo{cap1}{textual}{2}{Capítulo 1\\Introdução}
+        \docmapleveltwo{cap2}{textual}{3}{Capítulo 2\\Conteúdo}
+        \docmapleveltwo{cap3}{textual}{4}{Capítulo 3\\Conclusão}
+        
+        % Elementos pós-textuais (nível 2)
+        \docmapleveltwo{ref}{postextual}{4}{Referências\\Bibliográficas}
+        \docmapleveltwo{gloss}{postextual}{5}{Glossário}
+        \docmapleveltwo{ind}{postextual}{6}{Índice Remissivo}
+    \end{docstructmap}
+    
+    \docmaplegend{
+        Este mapa mental apresenta a estrutura completa do documento, incluindo capítulos
+        e elementos pré e pós-textuais. Esta versão simplificada é otimizada para 
+        compatibilidade com o Overleaf.
+    }
+}
+
+% Comando para mapa mental de capítulo específico
+\newcommand{\generatesectiondocmap}[1][Capítulo Atual]{%
+    \section*{Mapa da Estrutura do Capítulo}
+    
+    \begin{docstructmap}
+        % Nó raiz - Capítulo atual
+        \docmaproot{#1}
+        
+        % Seções do capítulo (nível 1)
+        \docmaplevelone{sec1}{1}{Seção 1}
+        \docmaplevelone{sec2}{3}{Seção 2}
+        \docmaplevelone{sec3}{5}{Seção 3}
+        
+        % Subseções (nível 2)
+        \docmapleveltwo{subsec1}{sec1}{0}{Subseção 1.1}
+        \docmapleveltwo{subsec2}{sec1}{1}{Subseção 1.2}
+        
+        \docmapleveltwo{subsec3}{sec2}{3}{Subseção 2.1}
+        \docmapleveltwo{subsec4}{sec2}{4}{Subseção 2.2}
+    \end{docstructmap}
+    
+    \docmaplegend{
+        Este mapa mental mostra a estrutura deste capítulo e suas seções.
+        Use este mapa para orientar-se na leitura ou edição do capítulo.
+    }
+}

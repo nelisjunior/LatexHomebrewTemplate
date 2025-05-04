@@ -86,6 +86,26 @@ Para facilitar a compilação, você pode usar o Overleaf:
 3. Configure o compilador para XeLaTeX
 4. Clique em "Recompilar" para gerar o PDF
 
+#### Solução de Problemas no Overleaf
+
+Se encontrar problemas ao compilar no Overleaf, especialmente relacionados aos mapas mentais:
+
+1. Abra o arquivo `main.tex`
+2. Descomente a linha `\input{overleaf-setup}` para carregar configurações de compatibilidade
+3. Se ainda tiver problemas, use a versão simplificada dos mapas mentais:
+   - Comente as linhas do sistema completo e descomente as linhas do sistema simplificado
+   - Recompile o documento
+
+Para problemas específicos, consulte o guia detalhado em `docs/troubleshooting-overleaf.md`
+
+#### Exemplos Independentes
+
+Para testar funcionalidades específicas, o projeto inclui exemplos independentes:
+
+- `exemplos/mapa-mental-simples.tex` - Exemplo simplificado de mapa mental
+- `exemplos/exemplo-mapamental.tex` - Exemplo completo de uso dos mapas mentais
+- `exemplos/mapas-rpg.tex` - Exemplos de mapas mentais para contextos de RPG
+
 ## Personalização
 
 O modelo pode ser facilmente personalizado:

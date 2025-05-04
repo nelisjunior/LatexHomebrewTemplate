@@ -1,0 +1,148 @@
+% Exemplo simplificado de mapa mental para teste no Overleaf
+% Este arquivo é independente e pode ser compilado sozinho
+
+\documentclass[12pt, a4paper]{article}
+
+% Pacotes necessários
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazilian]{babel}
+\usepackage{tikz}
+\usetikzlibrary{mindmap}
+\usepackage{tcolorbox}
+
+% Cores para o mapa mental
+\definecolor{boxbg}{RGB}{253, 245, 196}
+\definecolor{boxborder}{RGB}{190, 150, 86}
+\definecolor{secaotitulo}{RGB}{140, 26, 20}
+\definecolor{level0color}{RGB}{121, 26, 25}
+\definecolor{level1color}{RGB}{70, 26, 100}
+\definecolor{level2color}{RGB}{26, 70, 100}
+
+% Configuração básica do ambiente para mapas mentais
+\newenvironment{docstructmap}{%
+    \begin{center}
+    \begin{tikzpicture}[
+        mindmap,
+        level 1/.style={sibling angle=60, level distance=5cm},
+        level 2/.style={sibling angle=45, level distance=3.5cm},
+        level 3/.style={sibling angle=40, level distance=2.5cm},
+        concept/.style={
+            circle, draw=boxborder, thick, fill=boxbg,
+            text width=4cm, text centered, font=\bfseries
+        }
+    ]
+}{%
+    \end{tikzpicture}
+    \end{center}
+}
+
+% Comando para criar o nó raiz
+\newcommand{\docmaproot}[1]{%
+    \node[concept, fill=level0color!40, text=white, font=\large] (root) {#1};
+}
+
+% Comando para criar nós de nível 1
+\newcommand{\docmaplevelone}[3]{%
+    \node[concept, fill=level1color!20] (#1) at (#3:5cm) {#2};
+    \draw[thick] (root) -- (#1);
+}
+
+% Comando para criar nós de nível 2
+\newcommand{\docmapleveltwo}[4]{%
+    \node[concept, fill=level2color!20, scale=0.8] (#1) at (#2) ++(#4:3.5cm) {#3};
+    \draw[thick] (#2) -- (#1);
+}
+
+% Comando para legenda
+\newcommand{\docmaplegend}[1]{%
+    \begin{center}
+    \begin{tcolorbox}[
+        width=0.8\textwidth,
+        colback=boxbg,
+        colframe=boxborder,
+        title=Sobre este Mapa Mental
+    ]
+    #1
+    \end{tcolorbox}
+    \end{center}
+}
+
+\begin{document}
+
+\title{Exemplo Simples de Mapa Mental}
+\author{Projeto Homebrew}
+\date{\today}
+\maketitle
+
+\section{Introdução}
+
+Este é um exemplo simplificado de mapa mental para teste no Overleaf. Este arquivo foi projetado para ser compilado independentemente, sem depender de outros arquivos do projeto.
+
+\section{Exemplo de Mapa Mental Básico}
+
+\begin{docstructmap}
+    % Nó raiz
+    \docmaproot{Documento\\Acadêmico}
+    
+    % Nós de nível 1
+    \docmaplevelone{introducao}{Introdução}{0}
+    \docmaplevelone{metodologia}{Metodologia}{60}
+    \docmaplevelone{resultados}{Resultados}{120}
+    \docmaplevelone{discussao}{Discussão}{180}
+    \docmaplevelone{conclusao}{Conclusão}{240}
+    \docmaplevelone{referencias}{Referências}{300}
+    
+    % Nós de nível 2
+    \docmapleveltwo{problema}{introducao}{Problema de\\Pesquisa}{-15}
+    \docmapleveltwo{objetivos}{introducao}{Objetivos}{15}
+    
+    \docmapleveltwo{desenho}{metodologia}{Desenho de\\Estudo}{45}
+    \docmapleveltwo{analise}{metodologia}{Análise de\\Dados}{75}
+    
+    \docmapleveltwo{achados}{resultados}{Principais\\Achados}{105}
+    \docmapleveltwo{limitacoes}{resultados}{Limitações}{135}
+\end{docstructmap}
+
+\docmaplegend{
+    Este mapa mental apresenta a estrutura básica de um documento acadêmico,
+    mostrando as principais seções e algumas subseções. Este é um exemplo
+    simplificado para teste de compatibilidade com o Overleaf.
+}
+
+\section{Como Usar Este Exemplo}
+
+Se este exemplo funcionar corretamente no Overleaf, você poderá adaptar o estilo e os comandos para seus próprios mapas mentais. Os elementos básicos são:
+
+\begin{enumerate}
+    \item O ambiente \texttt{docstructmap} que configura o mapa mental
+    \item O comando \texttt{\textbackslash docmaproot\{texto\}} para o nó central
+    \item O comando \texttt{\textbackslash docmaplevelone\{id\}\{texto\}\{ângulo\}} para nós de primeiro nível
+    \item O comando \texttt{\textbackslash docmapleveltwo\{id\}\{id\_pai\}\{texto\}\{ângulo\}} para nós de segundo nível
+\end{enumerate}
+
+O ângulo é especificado em graus (0-360) e determina a posição do nó em relação ao seu pai.
+
+\section{Explicação Técnica}
+
+Este exemplo utiliza o pacote TikZ com a biblioteca mindmap para criar o mapa mental. A implementação é simplificada para maior compatibilidade com o Overleaf. Os principais elementos são:
+
+\begin{itemize}
+    \item Nós circulares para representar conceitos
+    \item Conexões simples entre os nós
+    \item Cores diferenciadas para cada nível hierárquico
+    \item Posicionamento radial dos nós a partir do centro
+\end{itemize}
+
+\section{Próximos Passos}
+
+Se este exemplo compilar corretamente, você pode:
+
+\begin{enumerate}
+    \item Copiar estes comandos para seu próprio projeto
+    \item Personalizar as cores e estilos conforme necessário
+    \item Expandir a estrutura para incluir mais níveis hierárquicos
+    \item Integrar com o sistema completo de mapas mentais do Projeto Homebrew
+\end{enumerate}
+
+\end{document}
