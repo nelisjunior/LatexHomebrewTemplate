@@ -16,6 +16,17 @@
 \usepackage{tikz}
 \usepackage{setspace}
 \usepackage{bookmark}
+\usepackage{float}
+\usepackage{lastpage}
+\usepackage{mdframed}
+\usepackage{subfig}
+\usepackage[usenames]{xcolor}
+\usepackage{csquotes}
+\usepackage{url}
+\usepackage{tabularx}
+\usepackage{verbatim}
+\usepackage{tocbibind}
+\usepackage{newfloat}
 
 % Suporte a língua portuguesa
 \usepackage[brazilian]{babel}
@@ -23,6 +34,14 @@
 % Bibliografia
 \usepackage[backend=biber, style=alphabetic]{biblatex}
 \addbibresource{referencias.bib}
+
+% Configurações de hyperlinks
+\hypersetup{
+    colorlinks=true,
+    linkcolor=secaotitulo,
+    citecolor=blue,
+    urlcolor=blue
+}
 
 % Configurações de fontes usando fontspec (para XeLaTeX)
 \usepackage{fontspec}

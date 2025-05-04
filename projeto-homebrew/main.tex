@@ -1,11 +1,24 @@
 % Documento principal - Compila todos os componentes
-\documentclass[12pt, a4paper, oneside]{book}
+\documentclass[
+    12pt,                     % tamanho da fonte
+    twoside,                  % para impressão em verso e anverso
+    openany,                  % capítulos podem começar em qualquer página
+    a4paper,                  % tamanho do papel
+    chapter=TITLE,            % títulos de capítulos em maiúsculas
+    brazil                    % idioma principal
+]{book}
 
 % Importação das configurações e pacotes
 \input{configuracoes}
 
 % Importação dos ambientes personalizados
 \input{ambientes}
+
+% Configurações adicionais para índice e glossário
+\usepackage{imakeidx}         % Para criação de índice
+\usepackage{glossaries}       % Para glossário
+\makeindex                    % Compila o índice
+\makeglossaries               % Compila o glossário
 
 % Início do documento
 \begin{document}
@@ -18,5 +31,8 @@
 
 % Componentes pós-textuais
 \input{2-postextual}
+
+% Imprimir o índice remissivo
+\printindex
 
 \end{document}

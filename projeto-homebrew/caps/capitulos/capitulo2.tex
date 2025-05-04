@@ -107,4 +107,55 @@ Para incluir figuras:
 
 O modelo utiliza o pacote \texttt{biblatex} para gerenciar as referências bibliográficas. Para adicionar novas referências, edite o arquivo \texttt{referencias.bib} e cite-as no texto usando \verb|\cite{chave}|.
 
+\begin{highlight}
+Para citar uma referência específica, use o comando \verb|\cite{chave}|. Por exemplo, para citar o livro \textit{The TeXbook} use \verb|\cite{knuthtex}|, que resulta em \cite{knuthtex}.
+
+Para citar múltiplas referências, separe as chaves por vírgula: \verb|\cite{wizardsdnd,homebrewery}|, resultando em \cite{wizardsdnd,homebrewery}.
+\end{highlight}
+
 Para imprimir a bibliografia, o comando \verb|\printbibliography| já está incluído no arquivo \texttt{caps/postextual.tex}.
+
+\rpgsection{Índice Remissivo}
+
+Este modelo também suporta a criação de índice remissivo através do pacote \texttt{imakeidx}. Para indexar termos no documento, use o comando \verb|\index{termo}|. Por exemplo:
+
+\begin{quotebox}
+\verb|As \index{classes} de personagem incluem \index{classes!magos}magos, \index{classes!guerreiros}guerreiros e \index{classes!ladinos}ladinos.|
+
+Isso criará um índice com entradas para "classes" e subentradas para "magos", "guerreiros" e "ladinos".
+\end{quotebox}
+
+\rpgnote{O índice remissivo é uma ferramenta poderosa para documentos extensos, permitindo que os leitores localizem rapidamente informações específicas.}
+
+Para processar o índice corretamente, é necessário compilar o documento com múltiplos passos:
+\begin{enumerate}
+    \item xelatex main.tex
+    \item biber main
+    \item makeindex main.idx
+    \item xelatex main.tex
+    \item xelatex main.tex
+\end{enumerate}
+
+\section{Glossário}
+
+O modelo inclui suporte para glossário através do pacote \texttt{glossaries}. Para definir um termo no glossário:
+
+\begin{quotebox}
+\verb|\newglossaryentry{latex}{|\\
+\verb|    name={LaTeX},|\\
+\verb|    description={Sistema de tipografia para produção de documentos técnicos e científicos}|\\
+\verb|}|
+\end{quotebox}
+
+E para referenciar esse termo no texto:
+
+\begin{quotebox}
+\verb|O \gls{latex} é amplamente utilizado em documentação científica.|
+\end{quotebox}
+
+O glossário será impresso com o comando \verb|\printglossaries|, que já está incluído no documento.
+
+\index{glossário}
+\index{LaTeX}
+\index{RPG!regras}
+\index{RPG!personagens}

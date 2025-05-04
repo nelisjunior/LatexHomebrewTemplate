@@ -19,7 +19,19 @@
             \end{tcbclipinterior}},
         breakable,
         drop shadow=boxborder,
+        before skip=0.5cm,
+        after skip=0.5cm,
     }
+}
+
+% Estilo alternativo usando mdframed
+\mdfdefinestyle{rpgstyle}{%
+    linecolor=boxborder,
+    linewidth=2pt,
+    backgroundcolor=boxbg,
+    roundcorner=5pt,
+    shadow=true,
+    shadowcolor=black!30,
 }
 
 % Ambiente para descrição de itens mágicos
@@ -118,4 +130,25 @@
         \colorbox{capa}{\textcolor{white}{\Large\bfseries #1}}%
         \endgroup
     \end{center}
+}
+
+% Comando para notas de margem (anotações)
+\newcommand{\rpgnote}[1]{%
+    \marginpar{%
+        \begin{mdframed}[style=rpgstyle]
+        {\small\itshape #1}
+        \end{mdframed}%
+    }%
+}
+
+% Comando para encabezamento de seção RPG
+\newcommand{\rpgsection}[1]{%
+    \vspace{0.5cm}
+    \begin{center}
+        \begin{tikzpicture}
+            \node[draw=boxborder, fill=boxbg, line width=2pt, inner sep=8pt] 
+                 {\large\bfseries\color{secaotitulo} #1};
+        \end{tikzpicture}
+    \end{center}
+    \vspace{0.3cm}
 }
