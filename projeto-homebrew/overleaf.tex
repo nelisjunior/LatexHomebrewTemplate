@@ -51,6 +51,32 @@
 % Opção 2: Usar versão simplificada dos mapas mentais
 % \def\usesimplifiedmindmap{1}
 
+% CORREÇÃO PARA MAPAS MENTAIS QUEBRADOS EM XELATEX 2023+
+% Esta seção corrige problemas de quebra de texto nos nós dos mapas mentais
+\makeatletter
+\newcommand{\fixnodebreaks}[1]{%
+  \def\nodebreakfixer{#1}%
+  \ifx\nodebreakfixer\@empty
+    #1%
+  \else
+    \begin{minipage}{3.2cm}
+      \centering\small#1
+    \end{minipage}%
+  \fi
+}
+\makeatother
+
+% Redefine o estilo de conceito para XeLaTeX 2023+
+\tikzset{
+  concept/.append style={
+    execute at begin node={\begin{varwidth}{3.5cm}\centering\small},
+    execute at end node={\end{varwidth}}
+  }
+}
+
+% Carrega o pacote varwidth se ainda não estiver carregado
+\usepackage{varwidth}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % SEÇÃO 3: OTIMIZAÇÕES DE MEMÓRIA
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

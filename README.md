@@ -46,6 +46,7 @@ A sequência de compilação é:
 - **Bibliografia**: Suporte completo via BibLaTeX e Biber
 - **Índice e Glossário**: Organização avançada do conteúdo
 - **Compatibilidade com Overleaf**: Configurações automáticas para funcionamento no Overleaf
+- **Otimização para XeLaTeX 2023+**: Correções específicas para mapas mentais e formatação
 
 ## Observações
 
@@ -55,3 +56,4 @@ Para informações adicionais, consulte:
 - `projeto-homebrew/OVERLEAF.md` - Instruções específicas para Overleaf
 - `projeto-homebrew/QUICK-START.md` - Guia rápido de utilização
 - `projeto-homebrew/PACOTES.md` - Documentação dos pacotes utilizados
+- `projeto-homebrew/CHECKLIST.md` - **Importante**: Lista de verificação para compilação correta e legibilidade

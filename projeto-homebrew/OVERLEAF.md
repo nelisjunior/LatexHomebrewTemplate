@@ -71,15 +71,27 @@ O documento deve ser compilado na seguinte sequência:
 
 No Overleaf, isso é feito automaticamente quando você clica em "Recompilar".
 
-## Limitações do Overleaf
+## Limitações do Overleaf e Compatibilidade com XeLaTeX 2023+
 
 O Overleaf pode ter limitações de:
 
 - **Tempo de compilação**: Para documentos muito grandes ou com muitos mapas mentais
 - **Memória**: Para layouts complexos e muitos elementos TikZ
 - **Bibliotecas de fontes**: Algumas fontes podem não estar disponíveis
+- **Quebras de texto em mapas mentais**: Texto pode aparecer "quebrado" em nós de mapas mentais
+- **Formatação de notas de rodapé**: Podem aparecer com formatação estranha
 
-Se encontrar esses problemas, use as configurações em `overleaf.tex` para simplificar os elementos problemáticos.
+### Solução de Problemas com XeLaTeX 2023+
+
+Este projeto já inclui correções para os problemas mais comuns do XeLaTeX 2023+:
+
+1. **Mapas mentais quebrados**: O arquivo `overleaf.tex` já inclui correções automáticas que centralizam e ajustam o texto nos nós do mapa mental.
+
+2. **Fontes incompatíveis**: O modelo usa fontes compatíveis com XeLaTeX 2023+ e inclui fallbacks.
+
+3. **Checklist completo**: Consulte o arquivo `CHECKLIST.md` para uma lista completa de verificação antes da compilação final.
+
+Se mesmo assim encontrar problemas, consulte `overleaf.tex` e descomente as linhas apropriadas nas seções relevantes.
 
 ## Recursos Adicionais
 
