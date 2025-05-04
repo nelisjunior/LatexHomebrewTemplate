@@ -5,6 +5,28 @@
 \usepackage{etoolbox}
 \usepackage{xstring}
 
+% CORREÇÕES PARA COMPATIBILIDADE COM XELATEX 2023+
+% Estas correções previnem a exposição de comandos internos no documento final
+
+% Proteções para evitar que comandos internos apareçam no documento
+\makeatletter
+% Este comando formata texto para evitar que variáveis internas sejam expostas
+\newcommand{\protect@internal@cmd}[1]{%
+  % Remove prefixos comuns de comandos internos
+  \IfBeginWith{#1}{@}{}{%
+    \IfBeginWith{#1}{autodocmap@}{}{%
+      \IfBeginWith{#1}{sectionbaseangle}{}{%
+        \IfBeginWith{#1}{subsectionbaseangle}{}{%
+          \IfBeginWith{#1}{sec1textual}{}{%
+            #1%
+          }%
+        }%
+      }%
+    }%
+  }%
+}
+\makeatother
+
 % Contador para manter controle de seções para o mapa mental
 \newcounter{docmapnodecounter}
 \setcounter{docmapnodecounter}{0}
@@ -28,13 +50,16 @@
 \let\oldsubsubsection\subsubsection
 \let\oldchapter\chapter
 
-% Define os ângulos base para cada nível
-\newcommand{\autodocmap@sectionbaseangle}{120}
-\newcommand{\autodocmap@subsectionbaseangle}{30}
-\newcommand{\autodocmap@subsubsectionbaseangle}{45}
+% Define os ângulos base para cada nível como comandos protegidos
+% Isso previne que esses valores apareçam no documento final
+\makeatletter
+\protected\def\autodocmap@sectionbaseangle{120}
+\protected\def\autodocmap@subsectionbaseangle{30}
+\protected\def\autodocmap@subsubsectionbaseangle{45}
+\makeatother
 
 % Armazenar informações do capítulo atual
-\newcommand{\autodocmap@currentchapter}{}
+\protected\def\autodocmap@currentchapter{}
 
 % Redefine o comando de capítulo para rastrear títulos
 \renewcommand{\chapter}[2][]{%

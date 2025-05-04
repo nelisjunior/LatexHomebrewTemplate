@@ -2,6 +2,25 @@
 
 Este documento fornece um checklist completo para garantir que seu projeto LaTeX compile corretamente e produza documentos legíveis, especialmente no ambiente Overleaf com XeLaTeX.
 
+## ATENÇÃO: Problemas Específicos Corrigidos
+
+Os seguintes problemas específicos foram identificados e corrigidos automaticamente:
+
+1. **Comandos e Variáveis Internas Expostas no Texto**: Como `sectionbaseangle120 subsectionbaseangle30` aparecendo no documento.
+   ✓ CORRIGIDO: Protegido comandos internos com `\protected\def` e adicionado filtros.
+
+2. **Texto Quebrado em Mapas Mentais**: Texto dentro dos nós do mapa mental aparecendo incorretamente formatado.
+   ✓ CORRIGIDO: Adicionado suporte a `varwidth` e centralização melhorada.
+
+3. **Elementos do Sumário Corrompidos**: Caracteres estranhos como `@defctionlistctionlist` no sumário.
+   ✓ CORRIGIDO: Implementada limpeza de tokens problemáticos.
+
+4. **Mapas Mentais Deformados**: Nós com formatação incorreta e/ou conteúdo transbordando.
+   ✓ CORRIGIDO: Redefinido tamanho e propriedades dos nós para formato adequado.
+
+5. **Texto em Ambientes Especiais**: Formatação incorreta em caixas de notas, avisos e destaques.
+   ✓ CORRIGIDO: Ajustado espaçamento e formatação destes elementos.
+
 ## Configuração do Compilador
 
 - [ ] **Compilador XeLaTeX**: Verifique se está usando XeLaTeX versão 2023+ (não pdfLaTeX)

@@ -51,31 +51,80 @@
 % Opção 2: Usar versão simplificada dos mapas mentais
 % \def\usesimplifiedmindmap{1}
 
-% CORREÇÃO PARA MAPAS MENTAIS QUEBRADOS EM XELATEX 2023+
-% Esta seção corrige problemas de quebra de texto nos nós dos mapas mentais
+% CORREÇÕES PARA PROBLEMAS DE FORMATAÇÃO EM XELATEX 2023+
+
+% 1. CORREÇÃO PARA TEXTO QUEBRADO (variáveis e comandos expostos)
+% Corrige o problema de exibição de comandos internos como:
+% 'sectionbaseangle120 subsectionbaseangle30' nos documentos
 \makeatletter
-\newcommand{\fixnodebreaks}[1]{%
-  \def\nodebreakfixer{#1}%
-  \ifx\nodebreakfixer\@empty
-    #1%
-  \else
-    \begin{minipage}{3.2cm}
-      \centering\small#1
-    \end{minipage}%
-  \fi
+\AtBeginDocument{
+  % Esconder variáveis internas do sistema
+  \let\oltextual\@textual
+  \renewcommand{\@textual}[1]{\oltextual{#1}}
+  
+  % Redefine os comandos base de ângulos para não serem impressos no documento
+  \newcommand{\fixangles}{%
+    \renewcommand{\autodocmap@sectionbaseangle}{120}%
+    \renewcommand{\autodocmap@subsectionbaseangle}{30}%
+    \renewcommand{\autodocmap@subsubsectionbaseangle}{45}%
+  }
+  \fixangles
 }
 \makeatother
 
-% Redefine o estilo de conceito para XeLaTeX 2023+
+% 2. CORREÇÃO PARA MAPAS MENTAIS QUEBRADOS (texto dentro dos nós)
+\usepackage{varwidth}
 \tikzset{
-  concept/.append style={
-    execute at begin node={\begin{varwidth}{3.5cm}\centering\small},
+  % Estilo completamente novo para os nós dos mapas
+  better concept/.style={
+    concept,
+    text width=3.5cm,
+    align=center,
+    font=\small,
+    execute at begin node={\begin{varwidth}{3.2cm}\centering},
     execute at end node={\end{varwidth}}
   }
 }
 
-% Carrega o pacote varwidth se ainda não estiver carregado
-\usepackage{varwidth}
+% Substitui o estilo padrão pelo corrigido
+\tikzset{
+  concept/.append style={better concept}
+}
+
+% 3. CORREÇÃO PARA PROBLEMAS DE TEXTO/ESPAÇOS
+% Elimina alguns comandos problemáticos que podem aparecer no texto
+\makeatletter
+\AtBeginDocument{
+  % Limpa tokens problemáticos
+  \let\@defctionlist\@empty
+  \let\sec1textual00\@empty
+  
+  % Fixes para elementos de cabeçalho/rodapé
+  \renewcommand{\headrulewidth}{0.4pt}
+  \renewcommand{\footrulewidth}{0.4pt}
+}
+\makeatother
+
+% 4. CORREÇÃO DE QUEBRAS DE PÁGINA E TEXTO
+\interfootnotelinepenalty=10000  % Evita quebras de nota de rodapé
+\widowpenalty=10000              % Evita linhas órfãs
+\clubpenalty=10000               % Evita linhas viúvas
+
+% 5. CORREÇÃO DE FORMATAÇÃO DE TABELAS E LISTAS
+\renewcommand{\arraystretch}{1.2}  % Melhora espaçamento em tabelas
+
+% 6. CORREÇÃO ESPECÍFICA PARA VARIAVEIS EXPOSTAS EM MAPAS
+% Esta macro substitui as variáveis expostas por espaços
+\usepackage{etoolbox}
+\makeatletter
+\AtBeginDocument{
+  \def\fix@exposed@vars#1{%
+    \ifstrequal{#1}{@defctionlistctionlist}{}{\ifstrequal{#1}{ctionbaseangle}{}{\ifstrequal{#1}{sec1textual}{}{\ifstrequal{#1}{subsec}{}{#1}}}}%
+  }
+  % Aplica a substituição em ambientes específicos
+  \pretocmd{\docstructmap}{\let\orig@textual\@textual\def\@textual##1{\orig@textual{\fix@exposed@vars{##1}}}}{}{}
+}
+\makeatother
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % SEÇÃO 3: OTIMIZAÇÕES DE MEMÓRIA

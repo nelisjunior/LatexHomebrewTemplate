@@ -7,23 +7,58 @@
 \definecolor{level3color}{RGB}{140, 20, 20}  % Nível 3 (rule)
 \definecolor{level4color}{RGB}{20, 100, 120} % Nível 4 (note)
 
+% CORREÇÕES PARA COMPATIBILIDADE COM XELATEX 2023+
+% Correção para o problema de textos quebrados nos nós dos mapas
+
+% Helper para formatar textos corretamente nos nós
+\newcommand{\formatnodetext}[1]{%
+  \begin{minipage}{3.2cm}%
+    \centering\small #1%
+  \end{minipage}%
+}
+
 % Ambiente para o mapa mental da estrutura do documento
 \newenvironment{docstructmap}[1][]{%
     \begin{center}
     \begin{tikzpicture}[
         mindmap,
-        level 1 concept/.append style={font=\large\bfseries, sibling angle=60, level distance=5cm},
-        level 2 concept/.append style={font=\normalsize\bfseries, sibling angle=45, level distance=3.5cm},
-        level 3 concept/.append style={font=\small, sibling angle=40, level distance=2.5cm},
-        level 4 concept/.append style={font=\scriptsize, sibling angle=30, level distance=2cm},
+        % Ajustes nos estilos de nível para melhor legibilidade
+        level 1 concept/.append style={
+            font=\large\bfseries, 
+            sibling angle=60, 
+            level distance=5cm,
+            align=center
+        },
+        level 2 concept/.append style={
+            font=\normalsize\bfseries, 
+            sibling angle=45, 
+            level distance=3.5cm,
+            align=center
+        },
+        level 3 concept/.append style={
+            font=\small, 
+            sibling angle=40, 
+            level distance=2.5cm,
+            align=center
+        },
+        level 4 concept/.append style={
+            font=\scriptsize, 
+            sibling angle=30, 
+            level distance=2cm,
+            align=center
+        },
+        % Estilo melhorado para os nós do mapa mental
         concept/.append style={
-            text width=4cm, 
-            font=\bfseries, 
-            minimum size=2cm, 
+            text width=3.2cm,           % Reduzido para evitar quebras
+            align=center,               % Centralização melhorada
+            font=\bfseries\small,       % Fonte menor por padrão
+            minimum size=1.8cm,         % Tamanho mínimo reduzido
             fill=boxbg, 
             text=secaotitulo, 
             line width=1pt, 
-            draw=boxborder
+            draw=boxborder,
+            execute at begin node={\begin{varwidth}{3cm}\centering},
+            execute at end node={\end{varwidth}}
         },
         concept connection/.append style={line width=1pt, draw=boxborder}
     ]
