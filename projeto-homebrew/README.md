@@ -24,7 +24,7 @@ Este projeto oferece uma estrutura modular de LaTeX combinando a estética visua
 │   ├── textual.tex
 │   └── postextual.tex
 ├── 📂 docs
-│   └── tutorial-mapamental.md
+│   └── MAPAMENTAL.md
 ├── 📂 exemplos
 │   ├── exemplo-mapamental.tex
 │   ├── mapas-rpg.tex
@@ -57,7 +57,8 @@ Este projeto oferece uma estrutura modular de LaTeX combinando a estética visua
 - **caps/capitulos/**: Diretório com os arquivos de cada capítulo
 - **caps/pretextual/docmap.tex**: Mapa mental pré-definido
 - **exemplos/**: Contém exemplos completos de uso do modelo
-- **docs/tutorial-mapamental.md**: Tutorial detalhado de uso dos mapas mentais
+- **docs/MAPAMENTAL.md**: Tutorial detalhado de uso dos mapas mentais
+- **QUICK-START.md**: Guia rápido para começar a usar o modelo
 - **imgs/**: Diretório para armazenar imagens
 
 ## Como Compilar
@@ -77,7 +78,7 @@ A compilação em múltiplas passagens é necessária para processar corretament
 
 **Observação:** Este projeto não pode ser compilado diretamente no Replit devido à falta de pacotes LaTeX necessários no ambiente. Recomendamos usar o Overleaf ou uma instalação local do LaTeX.
 
-### Compilação no Overleaf (Recomendado)
+### Compilação no Overleaf
 
 Para facilitar a compilação, você pode usar o Overleaf:
 
@@ -86,23 +87,10 @@ Para facilitar a compilação, você pode usar o Overleaf:
 3. Configure o compilador para XeLaTeX
 4. Clique em "Recompilar" para gerar o PDF
 
-#### Solução de Problemas no Overleaf
+### Exemplos
 
-Se encontrar problemas ao compilar no Overleaf, especialmente relacionados aos mapas mentais:
+Para entender a funcionalidade de mapas mentais, consulte:
 
-1. Abra o arquivo `main.tex`
-2. Descomente a linha `\input{overleaf-setup}` para carregar configurações de compatibilidade
-3. Se ainda tiver problemas, use a versão simplificada dos mapas mentais:
-   - Comente as linhas do sistema completo e descomente as linhas do sistema simplificado
-   - Recompile o documento
-
-Para problemas específicos, consulte o guia detalhado em `docs/troubleshooting-overleaf.md`
-
-#### Exemplos Independentes
-
-Para testar funcionalidades específicas, o projeto inclui exemplos independentes:
-
-- `exemplos/mapa-mental-simples.tex` - Exemplo simplificado de mapa mental
 - `exemplos/exemplo-mapamental.tex` - Exemplo completo de uso dos mapas mentais
 - `exemplos/mapas-rpg.tex` - Exemplos de mapas mentais para contextos de RPG
 

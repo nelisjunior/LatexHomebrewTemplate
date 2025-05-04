@@ -57,19 +57,8 @@
 \usepackage{fontspec}
 \defaultfontfeatures{Ligatures=TeX}
 
-% Tentativa de usar a fonte Dominican ou Luxurious Roman
-\IfFileExists{Dominican.otf}{%
-    \setmainfont{Dominican}
-}{%
-    \setmainfont{Luxurious Roman}[
-        Path = /usr/share/fonts/truetype/luxurious-roman/,
-        Extension = .ttf,
-        UprightFont = *-Regular,
-        BoldFont = *-Regular, % Se não houver variante negrito
-        ItalicFont = *-Regular, % Se não houver variante itálica
-        Renderer = Basic
-    ]
-}
+% Configuração de fontes para documentos RPG
+\setmainfont{Latin Modern Roman}
 
 % Definição de cores inspiradas em RPG
 \definecolor{pergaminho}{RGB}{249, 240, 181}
