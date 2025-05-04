@@ -1,0 +1,67 @@
+% Configurações específicas para compatibilidade com Overleaf
+% Inclua este arquivo em main.tex se estiver usando o Overleaf
+% Descomente as linhas conforme necessário para resolver problemas específicos de compilação
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% INSTRUÇÕES PARA COMPATIBILIDADE COM OVERLEAF
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Se você estiver enfrentando problemas de compilação no Overleaf,
+% descomente as seções relevantes abaixo:
+%
+% 1. PROBLEMAS COM FONTES: Se houver erros relacionados à fonte
+%    Latin Modern Roman, descomente as linhas na SEÇÃO 1
+%
+% 2. PROBLEMAS COM MAPAS MENTAIS: Se os mapas mentais não estiverem
+%    compilando (timeout/memória), descomente as linhas na SEÇÃO 2
+%
+% 3. PROBLEMAS DE MEMÓRIA: Se houver erros de falta de memória,
+%    descomente as linhas na SEÇÃO 3
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SEÇÃO 1: AJUSTES DE FONTES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Overleaf suporta estas fontes que são compatíveis com XeLaTeX
+% Descomente apenas UMA das linhas abaixo se necessário
+
+% \setmainfont{Times New Roman}
+% \setmainfont{TeX Gyre Termes}
+% \setmainfont{TeX Gyre Pagella}
+% \setmainfont{Latin Modern Roman}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SEÇÃO 2: SIMPLIFICAÇÃO DE MAPAS MENTAIS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Para problemas com mapas mentais muito complexos, descomente as linhas abaixo:
+
+% Opção 1: Desativar completamente os mapas mentais automáticos
+% \renewcommand{\generatecomplexdocmap}{\textit{(Mapa mental desativado para compatibilidade com Overleaf)}}
+% \renewcommand{\generateautodocmap}{\textit{(Mapa mental desativado para compatibilidade com Overleaf)}}
+
+% Opção 2: Usar versão simplificada dos mapas mentais
+% \def\usesimplifiedmindmap{1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SEÇÃO 3: OTIMIZAÇÕES DE MEMÓRIA
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Para problemas de memória no Overleaf:
+
+% Reduzir a complexidade de elementos decorativos
+% \tikzset{every shadow/.style={opacity=0}}
+% \tikzset{concept connection/.append style={line width=0.5pt}}
+
+% Reduzir resolução de cores
+% \tikzset{every tcolourbox/.append style={color=black, natural}}
+
+% Adicionar quebras de página extras para evitar seções grandes
+% \usepackage{etoolbox}
+% \apptocmd{\tableofcontents}{\newpage}{}{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% FIM DAS CONFIGURAÇÕES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
