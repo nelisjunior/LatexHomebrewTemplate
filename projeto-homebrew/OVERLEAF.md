@@ -100,3 +100,25 @@ Para mais informações sobre:
 - Mapas mentais: Consulte o arquivo `docs/MAPAMENTAL.md`
 - Guia de início rápido: Consulte o arquivo `QUICK-START.md`
 - Descrição geral do projeto: Consulte o arquivo `README.md`
+
+## Verificação da Consistência na Estrutura de Arquivos e Convenções de Nomenclatura
+
+- **Estrutura de Arquivos**: Verifique se a estrutura de arquivos está consistente e lógica
+  * `projeto-homebrew/0-pretextual.tex` deve incluir `caps/pretextual`
+  * `projeto-homebrew/1-textual.tex` deve incluir `caps/textual`
+  * `projeto-homebrew/2-postextual.tex` deve incluir `caps/postextual`
+  * `projeto-homebrew/caps/textual.tex` deve incluir capítulos de `caps/capitulos`
+
+- **Convenções de Nomenclatura**: Verifique se todos os capítulos estão corretamente incluídos e seguem uma convenção de nomenclatura consistente
+  * Capítulos em `projeto-homebrew/caps/capitulos` devem ser nomeados de forma consistente (ex: `capitulo1.tex`, `capitulo2.tex`)
+
+## Verificação da Configuração e Gerenciamento de Pacotes
+
+- **Pacotes Necessários**: Verifique se todos os pacotes necessários estão incluídos e corretamente configurados
+  * `projeto-homebrew/configuracoes.tex` deve incluir todos os pacotes necessários
+
+- **Configuração Correta**: Verifique se `configuracoes`, `ambientes` e `overleaf` estão corretamente configurados e não conflitam entre si
+  * `projeto-homebrew/main.tex` deve incluir `configuracoes`, `ambientes` e `overleaf` sem conflitos
+
+- **Guia de Início Rápido**: Verifique se as instruções no guia de início rápido estão claras e atualizadas
+  * `projeto-homebrew/QUICK-START.md` deve fornecer instruções claras e atualizadas

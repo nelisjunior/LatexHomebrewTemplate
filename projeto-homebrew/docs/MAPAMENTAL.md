@@ -214,3 +214,25 @@ Se encontrar erros de compilação relacionados aos mapas mentais:
 1. Certifique-se de que todos os IDs de nós são únicos em todo o documento
 2. Verifique se todos os nós de nível 2 e superiores referenciam IDs de nós pais existentes
 3. Tente simplificar o mapa, reduzindo o número de nós para identificar possíveis conflitos
+
+## Verificação da Consistência na Estrutura de Arquivos e Convenções de Nomenclatura
+
+- **Estrutura de Arquivos**: Verifique se a estrutura de arquivos está consistente e lógica
+  * `projeto-homebrew/0-pretextual.tex` deve incluir `caps/pretextual`
+  * `projeto-homebrew/1-textual.tex` deve incluir `caps/textual`
+  * `projeto-homebrew/2-postextual.tex` deve incluir `caps/postextual`
+  * `projeto-homebrew/caps/textual.tex` deve incluir capítulos de `caps/capitulos`
+
+- **Convenções de Nomenclatura**: Verifique se todos os capítulos estão corretamente incluídos e seguem uma convenção de nomenclatura consistente
+  * Capítulos em `projeto-homebrew/caps/capitulos` devem ser nomeados de forma consistente (ex: `capitulo1.tex`, `capitulo2.tex`)
+
+## Verificação da Configuração e Gerenciamento de Pacotes
+
+- **Pacotes Necessários**: Verifique se todos os pacotes necessários estão incluídos e corretamente configurados
+  * `projeto-homebrew/configuracoes.tex` deve incluir todos os pacotes necessários
+
+- **Configuração Correta**: Verifique se `configuracoes`, `ambientes` e `overleaf` estão corretamente configurados e não conflitam entre si
+  * `projeto-homebrew/main.tex` deve incluir `configuracoes`, `ambientes` e `overleaf` sem conflitos
+
+- **Guia de Início Rápido**: Verifique se as instruções no guia de início rápido estão claras e atualizadas
+  * `projeto-homebrew/QUICK-START.md` deve fornecer instruções claras e atualizadas
